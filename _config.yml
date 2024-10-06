@@ -28,8 +28,8 @@ author:
   bio              : "Short biography for the left-hand sidebar"
   location         : "Sylhet, Bangladesh"
   employer         : "North East University Bangladesh"
-  uri              : "wwww.neub.edu.bd"
-  email            : "mutalib.cs[at]gmail.com" 
+  uri              : # "wwww.neub.edu.bd"
+  email            : "mutalib.cs@gmail.com" 
 
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile
@@ -37,7 +37,7 @@ author:
   impactstory      : # URL
   orcid            : "http://orcid.org/yourorcidurl"
   semantic         : # URL
-  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
+ # pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
   researchgate     : # URL
 
   # Repositories and software development
@@ -58,7 +58,7 @@ author:
   keybase          : # Username
   instagram        : # Username
   lastfm           : # Username
-  linkedin         : # Username
+  linkedin         : md-abdul-mutalib
   mastodon         : # URL
   medium           : # URL
   pinterest        : # Username
