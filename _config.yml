@@ -8,9 +8,9 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Abdul Mutalib"
+title                    : "Md Abdul Mutalib"
 title_separator          : "-"
-name                     : &name "Abdul Mutalib"
+name                     : &name "Md Abdul Mutalib"
 description              : &description "personal description"
 url                      : https://mamutalib.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -22,10 +22,11 @@ repository               : "mamutalib/mamutalib.github.io"
 author:
   # Biographic information
   avatar           : "profile.png"
-  name             : "Abdul Mutalib"
+  name             : "Md Abdul Mutalib"
   # pronouns         : # example: "she/her"
   pronouns         : "he/him"  
-  bio              : "Short biography for the left-hand sidebar"
+  bio              : "AI Enthusiast | Machine Learning & Deep Learning Researcher | Passionate about Medical Diagnosis & Computer Vision Projects
+"
   location         : "Sylhet, Bangladesh"
   employer         : "North East University Bangladesh"
   uri              : # "wwww.neub.edu.bd"
@@ -45,7 +46,7 @@ author:
   codepen          : # Username
   dribbble         : # Username
   github           : "mamutalib"
-  kaggle           : # Username  
+  kaggle           : "mamutalib"
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
   # Social media
@@ -122,8 +123,8 @@ atom_feed:
 
 
 # SEO Related
-google_site_verification :
-bing_site_verification   :
+google_site_verification : "Gqp3ofmVy7p9xE2oF4zjaIEZH7P-7sJOBo7tIxRdTqE"
+bing_site_verification   : "3181071F5AF769F28523FD20F1F335FB"
 alexa_site_verification  :
 yandex_site_verification :
 
