@@ -26,6 +26,21 @@ layout: compress
     </div>
 
     {% include scripts.html %}
+    <script>
+      document.body.style.zoom = "0.9";
+    </script>
+
+    {% if jekyll.environment == "production" %}
+      <!-- Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11103927899"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'AW-11103927899');
+      </script>
+    {% endif %}
 
   </body>
 </html>
