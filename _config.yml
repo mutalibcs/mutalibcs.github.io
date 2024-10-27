@@ -153,7 +153,7 @@ social:
 analytics:
   provider               : "google-analytics-4" # Use "google" for Universal Analytics
   google:
-    tracking_id          : "AW-11103927899"
+    tracking_id          : "G-2RRX6MYX2N"
 
 
 

@@ -31,16 +31,21 @@ layout: compress
     </script>
 
     {% if jekyll.environment == "production" %}
-      <!-- Google Analytics -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11103927899"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'AW-11103927899');
-      </script>
-    {% endif %}
+    <!-- Google Analytics and Google Ads Conversion Tracking -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2RRX6MYX2N"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+  
+      // GA4 tracking
+      gtag('config', 'G-2RRX6MYX2N');
+  
+      // Google Ads conversion tracking
+      // gtag('config', 'AW-11103927899');
+    </script>
+  {% endif %}
+  
 
   </body>
 </html>

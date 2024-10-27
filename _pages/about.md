@@ -9,7 +9,7 @@ redirect_from:
 
 # Md. Abdul Mutalib
 
-**Aspiring AI Researcher | Deep Learning & Machine Learning Specialist | Research Assistant at CRC Research Centre**
+<!-- **Aspiring AI Researcher | Deep Learning & Machine Learning Specialist | Research Assistant at CRC Research Centre** -->
 
 Welcome to my personal website! I am Md. Abdul Mutalib, a passionate researcher and software engineer with a deep interest in **Artificial Intelligence**, specifically focusing on **deep learning** applications in **medical diagnosis**. My academic journey began with a B.Sc. in Computer Science and Engineering from [North East University Bangladesh (NEUB)](https://www.neub.edu.bd/), and I am currently involved in cutting-edge research at the **CRC Research Centre** on the project titled *"Hand Gesture Recognition and Visual Estimations."*
 
