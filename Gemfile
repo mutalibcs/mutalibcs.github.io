@@ -6,6 +6,9 @@ group :jekyll_plugins do
   gem 'jekyll-sitemap'
   gem 'jemoji'
   gem 'webrick', '~> 1.8'
+  gem 'jekyll-analytics'  # Added jekyll-analytics
+
 end
 
 gem 'github-pages'
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
