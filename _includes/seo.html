@@ -51,6 +51,8 @@
 {% if page.excerpt %}
   <meta property="og:description" content="{{ seo_description }}">
 {% endif %}
+<!-- SEO Keywords -->
+<meta name="keywords" content="{{ site.keywords }}">
 
 {% if site.twitter.username %}
   <meta name="twitter:site" content="@{{ site.twitter.username | replace: "@", "" }}">
