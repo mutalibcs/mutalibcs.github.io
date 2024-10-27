@@ -11,10 +11,14 @@ locale                   : "en-US"
 title                    : "Md Abdul Mutalib"
 title_separator          : "-"
 name                     : &name "Md Abdul Mutalib"
-description              : &description "personal description"
+description              : &description "Explore the academic portfolio of Md Abdul Mutalib, featuring cutting-edge research in AI, Machine Learning, and Deep Learning, with a focus on Medical Diagnosis and Computer Vision."
 url                      : https://mamutalib.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "mamutalib/mamutalib.github.io"
+# Additional info
+keywords                 : "AI, Machine Learning, Deep Learning, Medical Diagnosis, Computer Vision, Research, Academic Portfolio, Md Abdul Mutalib, Abdul Mutalib, Mutalib, M A Mutalib, MA Mutalib, Mohammad Mutalib"
+author                   : "Md Abdul Mutalib"
+language                 : "en"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.
