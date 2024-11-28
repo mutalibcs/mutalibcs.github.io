@@ -1,13 +1,13 @@
 ---
 permalink: /
-title: "Md. Abdul Mutalib - Research Assistant | CS Graduate | AI Innovator"
+title: ""
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
 
-# Md. Abdul Mutalib
+# About Me
 
 <!-- **Aspiring AI Researcher | Deep Learning & Machine Learning Specialist | Research Assistant at CRC Research Centre** -->
 
@@ -18,20 +18,32 @@ Welcome to my personal website! I am Md. Abdul Mutalib, a passionate researcher 
 - **Python Programming:** Proficient in building AI models using Python libraries such as TensorFlow, PyTorch, and Scikit-learn.
 - **Research & Innovation:** Actively working on research projects and exploring innovative solutions in medical AI.
 
-## Current Roles
-- **Research Assistant** at CRC Research Centre, focusing on gesture recognition and visual estimation techniques.
-- **Aspire Leadership Fellow** at [Aspire Institute](https://aspireleaders.org/), working towards leadership development and social impact in underrepresented communities.
-- **Student Mentor & Instructor:** Teaching **Bangla** and **ICT** to over 230 students, focusing on Bangla literature and computer science.
-
 ## Ongoing Research
 I am currently leading research on the following topics:
 - **Pneumonia Detection using Deep Learning:** Enhancing diagnostic accuracy through machine learning models applied to chest X-ray data.
 - **Retinal Disease Classification:** Exploring the use of **ensemble learning techniques** for better detection of retinal diseases.
-- **Transfer Learning in Medical Imaging:** Optimizing pre-trained models for specific diagnostic tasks.
+
 
 ## Academic Achievements
 - **Thesis Project:** *Using Machine Learning and Deep Learning to Identify Pneumonia from Chest X-ray Images* (2024)
 <!-- - **IELTS:** Scored **6.5 overall**, with a focus on improving my reading and speaking skills. -->
+
+## 🧑‍🔬 Research Experiences
+- **Intern Research and Development Unit** \| [UniV](https://www.univbd.com/team/md-abdul-mutalib/) \| September, 2024 - Present
+- **Research Assistant** \| [CRC Research Center](https://bd.linkedin.com/company/consortium2021) \| July, 2024 - Present
+
+
+## 👩‍💻 Technical Skills
+- Programming Languages: Python, C, C++, Java, JS
+- DS & ML Tools (Python): NumPy, Pandas, Matplotlib, Seaborn, Scikitlearn, Keras, Tensorflow, Pycaret, PyTorch.
+- ML Techniques: Normal ML Methods, Deep Learning, NLP, Computer Vision, Graph Neural Networks, Explainable AI, Robust Modeling, etc.
+- DS Techniques: EDA, Hypothesis Testing, Sampling, Statistical Testing, Corelation Analysis and Inference.
+- Data Analysis: MS Excel, SAS, Tableau, Power BI
+- IT Automation: Automation in MS Word, Powerpoint, Excel, Google Sheets, Adobe Photoshop, Illustrator, Python based Photo Manipulations 
+
+<!-- - Computational Biology and Bio-molecules: Molecular Networks, Classification, Molecular Interaction Detection and Classification, Generative Modeling with Flow Matching and Graph Diffusion
+- Human-Computer Interaction: LLM Customization, Survey Design, UI/Framework Design and Development, Data Collection and Analysis
+- Others: Product Development, Project Management, Business Development and Strategic Planning and Analysis.-->
 
 ## Get in Touch
 I am always eager to collaborate on research projects, exchange ideas, and learn from others. Feel free to reach out to me through the following channels:
@@ -41,4 +53,4 @@ I am always eager to collaborate on research projects, exchange ideas, and learn
 
 ---
 
-**"Bringing innovative AI solutions to life through research and collaboration."**
+> **"Bringing innovative AI solutions to life through research and collaboration."**
