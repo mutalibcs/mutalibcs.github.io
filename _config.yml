@@ -16,7 +16,7 @@ url                      : https://mamutalib.github.io # the base hostname & pro
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "mamutalib/mamutalib.github.io"
 # Additional info
-keywords                 : "AI, Machine Learning, Deep Learning, Medical Diagnosis, Computer Vision, Research, Academic Portfolio, Md Abdul Mutalib, Abdul Mutalib, Mutalib, M A Mutalib, MA Mutalib, Mohammad Mutalib"
+keywords                 : "AI, Machine Learning, Deep Learning, Medical Diagnosis, Computer Vision, Research, Academic Portfolio, Md Abdul Mutalib, Abdul Mutalib, Mutalib, mutallibcs M A Mutalib, MA Mutalib, Mohammad Mutalib"
 author                   : "Md Abdul Mutalib"
 language                 : "en"
 
@@ -27,8 +27,7 @@ author:
   # Biographic information
   avatar           : "profile.png"
   name             : "Md Abdul Mutalib"
-  # pronouns         : # example: "she/her"
-  pronouns         : "he/him"  
+  pronouns         : # "he/him"  
   bio              : "AI Enthusiast | Machine Learning & Deep Learning Researcher | Passionate about Medical Diagnosis & Computer Vision Projects"
   location         : "Sylhet, Bangladesh"
   employer         : "North East University Bangladesh"
@@ -50,11 +49,11 @@ author:
   dribbble         : # Username
   github           : "mamutalib"
   kaggle           : "mamutalib"
-  stackoverflow    : "15738917/abdul-mutalib" # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
+  stackoverflow    : # "15738917/abdul-mutalib" # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
   # Social media
   bluesky          : # "bsky.app" # Replace this with you Bluesky username
-  facebook         : mamutalibcse
+  facebook         : # mutalibcs
   flickr           : # Username
   foursquare       : # Username
   goodreads        : # Username
@@ -64,13 +63,13 @@ author:
   lastfm           : # Username
   linkedin         : md-abdul-mutalib
   mastodon         : # URL
-  medium           : mamutalib # URL
+  medium           : # mamutalib # URL
   pinterest        : # Username
   soundcloud       : # Username
   steam            : # Username
-  telegram         : https://t.me/mamutalib # URL
+  telegram         : # https://t.me/mamutalib # URL
   tumblr           : # Username
-  twitter          : m_a_mutalib # Username for X / Twitter
+  twitter          : mutalibcs # Username for X / Twitter
   vine             : # Username
   weibo            : # Username
   wikipedia        : # Username
@@ -134,9 +133,9 @@ yandex_site_verification :
 
 # Social Sharing
 twitter:
-  username               : m_a_mutalib
+  username               : mutalibcs
 facebook:
-  username               : mamutalibcse
+  username               : # mutalibcs
   app_id                 :
   publisher              :
 og_image                 : /images/profile.png # Open Graph/Twitter default site image
@@ -146,7 +145,7 @@ social:
   type: Person  # Use 'Person' or 'Organization' depending on your site
   name: Md Abdul Mutalib  # Name for structured data, useful if different from the site's name
   links:
-    - https://twitter.com/m_a_mutalib       # Your Twitter profile
+    - https://twitter.com/mutalibcs       # Your Twitter profile
     - https://linkedin.com/in/md-abdul-mutalib # Your LinkedIn profile
     - https://github.com/mamutalib      # Your GitHub profile
     # Add additional social media links as needed
