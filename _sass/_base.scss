@@ -16,6 +16,7 @@ body {
   font-family: $global-font-family;
   line-height: 1.5;
 
+
   &.overflow--hidden {
     /* when primary navigation is visible, the content in the background won't scroll */
     overflow: hidden;
@@ -69,6 +70,7 @@ ins {
   a {
     color: inherit;
   }
+  color:rgb(0, 90, 192)
 }
 
 del a {
@@ -112,16 +114,107 @@ blockquote {
 
 /* links */
 
+// a {
+//   &:focus {
+//     @extend %tab-focus;
+//   }
+
+//   &:hover,
+//   &:active {
+//     outline: 0;
+//   }
+//   color: rgb(0, 90, 192),
+
+// }
+// a {
+//   color: rgb(0, 90, 192);
+//   text-decoration: none;
+//   font-weight: 500; // Medium font weight for emphasis
+//   // font-size: 1rem; // Base font size
+//   letter-spacing: 0.5px; // Slight letter spacing
+//   padding: 2px 4px;
+//   transition: all 0.3s ease;
+
+//   // Focus state
+//   &:focus {
+//     @extend %tab-focus; // Custom focus style if %tab-focus is defined
+//     outline: 2px solid rgb(0, 90, 192); // Custom focus ring
+//     outline-offset: 2px;
+//     background-color: rgba(0, 90, 192, 0.1); // Optional background highlight for focus
+//     border-radius: 4px; // Rounded corners
+//     color: rgb(0, 120, 255); // Lighter focus color
+//   }
+
+//   // Hover state
+//   &:hover {
+//     color: rgb(0, 120, 255); // Slightly brighter color on hover
+//     text-decoration: underline; // Underline on hover
+//     background-color: rgba(0, 90, 192, 0.1); // Highlight background on hover
+//     border-radius: 4px; // Rounded corners
+//   }
+
+//   // Active state (on click)
+//   &:active {
+//     transform: scale(0.98); // Slight "pressing" effect
+//     background-color: rgba(0, 90, 192, 0.2); // Darker background on active state
+//     color: rgb(0, 70, 160); // Darker color when clicked
+//     opacity: 0.8; // Dim the link to simulate pressing
+//   }
+
+//   // Accessibility-friendly hover/focus styles
+//   &:focus,
+//   &:hover {
+//     text-decoration: underline; // Underline for emphasis
+//   }
+
+//   // Accessibility-friendly outline alternative
+//   &:focus {
+//     outline: 2px solid rgb(0, 90, 192); // Custom outline for focus
+//   }
+// }
+// new version link
 a {
+  color: rgb(0, 90, 192);
+  text-decoration: none !important; // Ensure no underline with !important
+  font-weight: 500; // Medium font weight for emphasis
+  // font-size: 1rem; // Base font size
+  letter-spacing: 0.5px; // Slight letter spacing
+  padding: 2px 4px;
+  transition: all 0.2s ease;
+
+  // Focus state
   &:focus {
-    @extend %tab-focus;
+    @extend %tab-focus; // Custom focus style if %tab-focus is defined
+    outline: 2px solid rgb(0, 90, 192); // Custom focus ring
+    outline-offset: 2px;
+    background-color: rgba(0, 90, 192, 0.1); // Optional background highlight for focus
+    border-radius: 4px; // Rounded corners
+    color: rgb(0, 120, 255); // Lighter focus color
   }
 
-  &:hover,
+  // Hover state
+  &:hover {
+    color: rgb(0, 120, 255); // Slightly brighter color on hover
+    background-color: rgba(0, 90, 192, 0.1); // Highlight background on hover
+    border-radius: 4px; // Rounded corners
+  }
+
+  // Active state (on click)
   &:active {
-    outline: 0;
+    transform: scale(0.98); // Slight "pressing" effect
+    background-color: rgba(0, 90, 192, 0.2); // Darker background on active state
+    color: rgb(0, 70, 160); // Darker color when clicked
+    opacity: 0.8; // Dim the link to simulate pressing
+  }
+
+  // Accessibility-friendly focus styles
+  &:focus {
+    outline: 2px solid rgb(0, 90, 192); // Custom outline for focus
   }
 }
+
+
+
 
 /* code */
 
