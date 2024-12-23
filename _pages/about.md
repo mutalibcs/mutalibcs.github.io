@@ -5,6 +5,10 @@ author_profile: true
 redirect_from: 
   - /about/
   - /about.html
+  - /index.html
+  - /home.html
+  - /home
+  - /profile
 ---
 
 # About Me
