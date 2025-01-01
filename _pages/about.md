@@ -7,11 +7,12 @@ redirect_from:
   - /home.html
   - /home
   - /profile
+
+description: "Welcome to the personal website of Md. Abdul Mutalib, an AI researcher and software engineer specializing in deep learning applications in medical diagnosis."
+keywords: "Md Abdul Mutalib, Abdul Mutalib, AI Researcher, Software Engineer, Deep Learning, Machine Learning, Medical Diagnosis, NEUB, CRC Research Centre"
 ---
 
-# About Me
-
-<!-- **Aspiring AI Researcher | Deep Learning & Machine Learning Specialist | Research Assistant at CRC Research Centre** -->
+# About Abdul Mutalib
 
 Welcome to my personal website! I am Md. Abdul Mutalib, a passionate researcher and software engineer with a deep interest in **Artificial Intelligence**, specifically focusing on **deep learning** applications in **medical diagnosis**. My academic journey began with a B.Sc. in Computer Science and Engineering from [North East University Bangladesh (NEUB)](https://www.neub.edu.bd/), and I am currently involved in cutting-edge research at the **CRC Research Centre** on the project titled *"Hand Gesture Recognition and Visual Estimations."*
 
@@ -28,7 +29,6 @@ I am currently leading research on the following topics:
 
 ## Academic Achievements
 - **Thesis Project:** *Using Machine Learning and Deep Learning to Identify Pneumonia from Chest X-ray Images* (2024)
-<!-- - **IELTS:** Scored **6.5 overall**, with a focus on improving my reading and speaking skills. -->
 
 ## 🧑‍🔬 Research Experiences
 - **Intern Research and Development Unit** \| [UniV](https://www.univbd.com/team/md-abdul-mutalib/) \| September, 2024 - Present
@@ -36,16 +36,17 @@ I am currently leading research on the following topics:
 
 
 ## 👩‍💻 Technical Skills
-- Programming Languages: Python, C, C++, Java, JS
-- DS & ML Tools (Python): NumPy, Pandas, Matplotlib, Seaborn, Scikitlearn, Keras, Tensorflow, Pycaret, PyTorch.
+## 👩‍💻 Technical Skills
+- Programming Languages: Python, C, C++, Java, JavaScript, R (basic)
+- DS & ML Tools (Python): NumPy, Pandas, Matplotlib, Seaborn, Scikit-learn, Keras, TensorFlow, Pycaret, PyTorch
 - ML Techniques: Normal ML Methods, Deep Learning, NLP, Computer Vision, Graph Neural Networks, Explainable AI, Robust Modeling, etc.
-- DS Techniques: EDA, Hypothesis Testing, Sampling, Statistical Testing, Corelation Analysis and Inference.
+- DS Techniques: EDA, Hypothesis Testing, Sampling, Statistical Testing, Correlation Analysis and Inference
 - Data Analysis: MS Excel, SAS, Tableau, Power BI
-- IT Automation: Automation in MS Word, Powerpoint, Excel, Google Sheets, Adobe Photoshop, Illustrator, Python based Photo Manipulations 
+- IT Automation: Automation in MS Word, PowerPoint, Excel, Google Sheets, Adobe Photoshop, Illustrator, Python-based Photo Manipulations
+- Computer Vision: Image processing, object detection, hand gesture recognition using OpenCV
+- Deep Learning: Image classification, object detection, and natural language processing
+- Documentation and Illustration: LaTeX, MS Office
 
-<!-- - Computational Biology and Bio-molecules: Molecular Networks, Classification, Molecular Interaction Detection and Classification, Generative Modeling with Flow Matching and Graph Diffusion
-- Human-Computer Interaction: LLM Customization, Survey Design, UI/Framework Design and Development, Data Collection and Analysis
-- Others: Product Development, Project Management, Business Development and Strategic Planning and Analysis.-->
 
 ## Get in Touch
 I am always eager to collaborate on research projects, exchange ideas, and learn from others. Feel free to reach out to me through the following channels:
