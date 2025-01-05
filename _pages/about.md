@@ -36,7 +36,6 @@ I am currently leading research on the following topics:
 
 
 ## 👩‍💻 Technical Skills
-## 👩‍💻 Technical Skills
 - Programming Languages: Python, C, C++, Java, JavaScript, R (basic)
 - DS & ML Tools (Python): NumPy, Pandas, Matplotlib, Seaborn, Scikit-learn, Keras, TensorFlow, Pycaret, PyTorch
 - ML Techniques: Normal ML Methods, Deep Learning, NLP, Computer Vision, Graph Neural Networks, Explainable AI, Robust Modeling, etc.
