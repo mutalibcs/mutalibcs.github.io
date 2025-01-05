@@ -12,9 +12,9 @@ title                    : "Md Abdul Mutalib"
 title_separator          : "-"
 name                     : &name "Md Abdul Mutalib"
 description              : &description "Explore the academic portfolio of Md Abdul Mutalib, featuring cutting-edge research in AI, Machine Learning, and Deep Learning, with a focus on Medical Diagnosis and Computer Vision."
-url                      : https://mamutalib.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : https://mutalibcs.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "mamutalib/mamutalib.github.io"
+repository               : "mutalibcs/mutalibcs.github.io"
 # Additional info
 keywords                 : "AI, Machine Learning, Deep Learning, Medical Diagnosis, Computer Vision, Research, Academic Portfolio, Md Abdul Mutalib, Abdul Mutalib, Mutalib, mutallibcs M A Mutalib, MA Mutalib, Mohammad Mutalib"
 author                   : "Md Abdul Mutalib"
@@ -47,8 +47,8 @@ author:
   bitbucket        : # Username - Update with your username on the site
   codepen          : # Username
   dribbble         : # Username
-  github           : "mamutalib"
-  kaggle           : "mamutalib"
+  github           : "mutalibcs"
+  kaggle           : "mutalibcs"
   stackoverflow    : # "15738917/abdul-mutalib" # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
   # Social media
@@ -63,11 +63,11 @@ author:
   lastfm           : # Username
   linkedin         : md-abdul-mutalib
   mastodon         : # URL
-  medium           : # mamutalib # URL
+  medium           : # mutalibcs # URL
   pinterest        : # Username
   soundcloud       : # Username
   steam            : # Username
-  telegram         : # https://t.me/mamutalib # URL
+  telegram         : # https://t.me/mutalibcs # URL
   tumblr           : # Username
   twitter          : mutalibcs # Username for X / Twitter
   vine             : # Username
@@ -147,7 +147,7 @@ social:
   links:
     - https://twitter.com/mutalibcs       # Your Twitter profile
     - https://linkedin.com/in/md-abdul-mutalib # Your LinkedIn profile
-    - https://github.com/mamutalib      # Your GitHub profile
+    - https://github.com/mutalibcs      # Your GitHub profile
     # Add additional social media links as needed
 
 # # Analytics
