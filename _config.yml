@@ -1,172 +1,436 @@
+# # Welcome to Jekyll!
+# #
+# # This config file is meant for settings that affect your entire site, values
+# # which you are expected to set up once and rarely need to edit after that.
+# # For technical reasons, this file is *NOT* reloaded automatically when you use
+# # `jekyll serve -l -H localhost`. If you change this file, please restart the 
+# # server process.
+
+# # Basic Site Settings
+# locale                   : "en-US"
+# title                    : "Md Abdul Mutalib"
+# title_separator          : "-"
+# name                     : &name "Md Abdul Mutalib"
+# description              : &description "Explore the academic portfolio of Md Abdul Mutalib, featuring cutting-edge research in AI, Machine Learning, and Deep Learning, with a focus on Medical Diagnosis and Computer Vision."
+# url                      : https://mutalibcs.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+# baseurl                  : "https://mutalibcs.github.io" # the subpath of your site, e.g. "/blog"
+# repository               : "mutalibcs/mutalibcs.github.io"
+# # Additional info
+# keywords                 : "Md Abdul Mutalib, Abdul Mutalib, Mutalib, mutalibcs, mutalib.cs M A Mutalib, MA Mutalib"
+# author                   : "Md Abdul Mutalib"
+# language                 : "en"
+
+# # Site Author - The following control what appear as part of the author content on the side bar.
+# #               If a field is blank the icon and link will not appear, otherwise it will be shown.
+# #               Additional customization can be done by editing /_includes/author-profile.html
+# author:
+#   # Biographic information
+#   avatar           : "profile.png"
+#   name             : "Md Abdul Mutalib"
+#   pronouns         : # "he/him"  
+#   bio              : "AI Enthusiast | Machine Learning & Deep Learning Researcher | Passionate about Medical Diagnosis & Computer Vision Projects"
+#   location         : "Sylhet, Bangladesh"
+#   employer         : "North East University Bangladesh"
+#   URL              : "https://wwww.neub.edu.bd"
+#   email            : "mutalib.cs@gmail.com" 
+
+#   # Academic websites
+#   arxiv            : # URL - Update with the correct link to your profile
+#   googlescholar    : "https://scholar.google.com/citations?user=CkDoYbEAAAAJ"
+#   impactstory      : # URL
+#   # orcid            : # "http://orcid.org/yourorcidurl"
+#   semantic         : # URL
+#  # pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
+#   researchgate     : # URL
+
+#   # Repositories and software development
+#   bitbucket        : # Username - Update with your username on the site
+#   codepen          : # Username
+#   dribbble         : # Username
+#   github           : "mutalibcs"
+#   kaggle           : "mamutalib"
+#   stackoverflow    : # "15738917/abdul-mutalib" # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
+
+#   # Social media
+#   bluesky          : # "bsky.app" # Replace this with you Bluesky username
+#   facebook         : # mutalibcs
+#   flickr           : # Username
+#   foursquare       : # Username
+#   goodreads        : # Username
+#   google_plus      : # Username
+#   keybase          : # Username
+#   instagram        : # Username
+#   lastfm           : # Username
+#   linkedin         : md-abdul-mutalib
+#   mastodon         : # URL
+#   medium           : # mutalibcs # URL
+#   pinterest        : # Username
+#   soundcloud       : # Username
+#   steam            : # Username
+#   telegram         : # https://t.me/mutalibcs # URL
+#   tumblr           : # Username
+#   twitter          : mutalibcs # Username for X / Twitter
+#   vine             : # Username
+#   weibo            : # Username
+#   wikipedia        : # Username
+#   xing             : # Username
+#   youtube          : # Username
+#   zhihu            : # Username
+
+# # Publication Category - The following the list of publication categories and their headings
+# publication_category:
+#   books:
+#     title: 'Books'
+#   manuscripts:
+#     title: 'Journal Articles'    
+#   conferences:
+#     title: 'Conference Papers'
+
+# # Site Settings
+# teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
+# breadcrumbs              : false # true, false (default)
+# words_per_minute         : 160
+# future                   : true
+# read_more                : "enabled" # if enabled, adds "Read more" links to excerpts
+# talkmap_link             : false #change to true to add link to talkmap on talks page
+# comments:
+#   provider               : # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
+#   disqus:
+#     shortname            :
+#   discourse:
+#     server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
+#   facebook:
+#     appid                :
+#     num_posts            : # 5 (default)
+#     colorscheme          : # "light" (default), "dark"
+# staticman:
+#   allowedFields          : ['name', 'email', 'url', 'message']
+#   branch                 : "gh-pages" # "master", "gh-pages"
+#   commitMessage          : "New comment."
+#   filename               : comment-{@timestamp}
+#   format                 : "yml"
+#   moderation             : true
+#   path                   : "_data/comments/{options.slug}"
+#   requiredFields         : ['name', 'email', 'message']
+#   transforms:
+#     email                : "md5"
+#   generatedFields:
+#     date:
+#       type               : "date"
+#       options:
+#         format           : "iso8601" # "iso8601" (default), "timestamp-seconds", "timestamp-milliseconds"
+# atom_feed:
+#   hide                   : true     # change to true to hide the RSS feed in the footer
+#   path                   : # blank (default) uses feed.xml
+
+
+# # SEO Related
+# google_site_verification : "Gqp3ofmVy7p9xE2oF4zjaIEZH7P-7sJOBo7tIxRdTqE"
+# bing_site_verification   : "3181071F5AF769F28523FD20F1F335FB"
+# alexa_site_verification  :
+# yandex_site_verification :
+
+
+# # Social Sharing
+# twitter:
+#   username               : mutalibcs
+# facebook:
+#   username               : # mutalibcs
+#   app_id                 :
+#   publisher              :
+# og_image                 : /images/profile.png # Open Graph/Twitter default site image
+# # For specifying social profiles
+# # - https://developers.google.com/structured-data/customize/social-profiles
+# social:
+#   type: Person  # Use 'Person' or 'Organization' depending on your site
+#   name: Md Abdul Mutalib  # Name for structured data, useful if different from the site's name
+#   links:
+#     - https://twitter.com/mutalibcs       # Your Twitter profile
+#     - https://linkedin.com/in/md-abdul-mutalib # Your LinkedIn profile
+#     - https://github.com/mutalibcs      # Your GitHub profile
+#     # Add additional social media links as needed
+
+# # # Analytics
+# # analytics:
+# #   provider               :  "false" # false (default), "google", "google-universal", "google-analytics-4", "custom"
+# #   google:
+# #     tracking_id          :
+# analytics:
+#   provider               : "google-analytics-4" # Use "google" for Universal Analytics
+#   google:
+#     tracking_id          : "G-2RRX6MYX2N"
+
+
+
+# # Reading Files
+# include:
+#   - .htaccess
+#   - _pages
+#   - files
+# exclude:
+#   - "*.sublime-project"
+#   - "*.sublime-workspace"
+#   - .asset-cache
+#   - .bundle
+#   - .github
+#   - .jekyll-assets-cache
+#   - .sass-cache
+#   - assets/js/_main.js
+#   - assets/js/plugins
+#   - assets/js/vendor
+#   - CHANGELOG
+#   - Capfile
+#   - config
+#   - Dockerfile
+#   - Gemfile
+#   - Gruntfile.js
+#   - gulpfile.js
+#   - LICENSE
+#   - local
+#   - log
+#   - node_modules
+#   - package.json*
+#   - Rakefile
+#   - README
+#   - tmp
+#   - vendor
+# keep_files:
+#   - .git
+#   - .svn
+# encoding: "utf-8"
+# markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+
+
+# # Conversion
+# markdown: kramdown
+# highlighter: rouge
+# lsi: false
+# excerpt_separator: "\n\n"
+# incremental: false
+
+
+# # Markdown Processing
+# kramdown:
+#   input: GFM
+#   hard_wrap: false
+#   auto_ids: true
+#   footnote_nr: 1
+#   entity_output: as_char
+#   toc_levels: 1..6
+#   smart_quotes: lsquo,rsquo,ldquo,rdquo
+#   enable_coderay: false
+
+
+# # These settings control the types of collections used by the template
+# collections:
+#   teaching:
+#     output: true
+#     permalink: /:collection/:path/
+#   publications:
+#     output: true
+#     permalink: /:collection/:path/
+#   portfolio:
+#     output: true
+#     permalink: /:collection/:path/
+#   talks:
+#     output: true
+#     permalink: /:collection/:path/
+
+
+# # These settings control how pages and collections are included in the site
+# defaults:
+#   # _posts
+#   - scope:
+#       path: ""
+#       type: posts
+#     values:
+#       layout: single
+#       author_profile: true
+#       read_time: true
+#       comments: true
+#       share: true
+#       related: true
+#   # _pages
+#   - scope:
+#       path: ""
+#       type: pages
+#     values:
+#       layout: single
+#       author_profile: true
+#   # _teaching
+#   - scope:
+#       path: ""
+#       type: teaching
+#     values:
+#       layout: single
+#       author_profile: true
+#       share: true
+#       comments: true
+#   # _publications
+#   - scope:
+#       path: ""
+#       type: publications
+#     values:
+#       layout: single
+#       author_profile: true
+#       share: true
+#       comments: true
+#   # _portfolio
+#   - scope:
+#       path: ""
+#       type: portfolio
+#     values:
+#       layout: single
+#       author_profile: true
+#       share: true
+#       comment: true
+#   # _talks
+#   - scope:
+#       path: ""
+#       type: talks
+#     values:
+#       layout: talk
+#       author_profile: true
+#       share: true
+
+
+# # Sass/SCSS
+# sass:
+#   sass_dir: _sass
+#   style: compressed # http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
+
+
+# # Outputting
+# permalink: /:categories/:title/
+# # paginate: 5 # amount of posts to show
+# # paginate_path: /page:num/
+# timezone: Etc/UTC # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+
+
+# # Plugins
+# plugins:
+#   - jekyll-feed
+#   - jekyll-gist
+#   - jekyll-paginate
+#   - jekyll-sitemap
+#   - jemoji
+#   - jekyll-redirect-from
+
+# # Mimic GitHub Pages with --safe
+# whitelist:
+#   - jekyll-feed
+#   - jekyll-gist
+#   - jekyll-paginate
+#   - jekyll-sitemap
+#   - jemoji
+
+
+# # Archives
+# #  Type
+# #  - GitHub Pages compatible archive pages built with Liquid ~> type: liquid (default)
+# #  - Jekyll Archives plugin archive pages ~> type: jekyll-archives
+# #  Path (examples)
+# #  - Archive page should exist at path when using Liquid method or you can
+# #    expect broken links (especially with breadcrumbs enabled)
+# #  - <base_path>/tags/my-awesome-tag/index.html ~> path: /tags/
+# #  - <base_path/categories/my-awesome-category/index.html ~> path: /categories/
+# #  - <base_path/my-awesome-category/index.html ~> path: /
+# category_archive:
+#   type: liquid
+#   path: /categories/
+# tag_archive:
+#   type: liquid
+#   path: /tags/
+# # https://github.com/jekyll/jekyll-archives
+# # jekyll-archives:
+# #   enabled:
+# #     - categories
+# #     - tags
+# #   layouts:
+# #     category: archive-taxonomy
+# #     tag: archive-taxonomy
+# #   permalinks:
+# #     category: /categories/:name/
+# #     tag: /tags/:name/
+
+
+# # HTML Compression
+# # - http://jch.penibelst.de/
+# compress_html:
+#   clippings: all
+#   ignore:
+#     envs: development
+
+
 # Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your entire site, values
-# which you are expected to set up once and rarely need to edit after that.
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# `jekyll serve -l -H localhost`. If you change this file, please restart the 
-# server process.
+# This config file is meant for settings that affect your entire site.
 
 # Basic Site Settings
-locale                   : "en-US"
-title                    : "Md Abdul Mutalib"
-title_separator          : "-"
-name                     : &name "Md Abdul Mutalib"
-description              : &description "Explore the academic portfolio of Md Abdul Mutalib, featuring cutting-edge research in AI, Machine Learning, and Deep Learning, with a focus on Medical Diagnosis and Computer Vision."
-url                      : https://mutalibcs.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "mutalibcs/mutalibcs.github.io"
-# Additional info
-keywords                 : "AI, Machine Learning, Deep Learning, Medical Diagnosis, Computer Vision, Research, Academic Portfolio, Md Abdul Mutalib, Abdul Mutalib, Mutalib, mutallibcs M A Mutalib, MA Mutalib, Mohammad Mutalib"
-author                   : "Md Abdul Mutalib"
-language                 : "en"
+locale: "en-US"
+title: "Md Abdul Mutalib"
+title_separator: "-"
+name: "Md Abdul Mutalib"
+description: "Explore the academic portfolio of Md Abdul Mutalib, featuring cutting-edge research in AI, Machine Learning, and Deep Learning, with a focus on Medical Diagnosis and Computer Vision."
+url: "https://mutalibcs.github.io" # Base URL for your site
+baseurl: "" # Subpath of your site (leave blank if not applicable)
+repository: "mutalibcs/mutalibcs.github.io"
+keywords: "Md Abdul Mutalib, Abdul Mutalib, Mutalib, mutalibcs, mutalib.cs, M A Mutalib, MA Mutalib"
+author: "Md Abdul Mutalib"
+language: "en"
 
-# Site Author - The following control what appear as part of the author content on the side bar.
-#               If a field is blank the icon and link will not appear, otherwise it will be shown.
-#               Additional customization can be done by editing /_includes/author-profile.html
+# Site Author Settings
 author:
-  # Biographic information
-  avatar           : "profile.png"
-  name             : "Md Abdul Mutalib"
-  pronouns         : # "he/him"  
-  bio              : "AI Enthusiast | Machine Learning & Deep Learning Researcher | Passionate about Medical Diagnosis & Computer Vision Projects"
-  location         : "Sylhet, Bangladesh"
-  employer         : "North East University Bangladesh"
-  URL              : "https://wwww.neub.edu.bd"
-  email            : "mutalib.cs@gmail.com" 
-
-  # Academic websites
-  arxiv            : # URL - Update with the correct link to your profile
-  googlescholar    : "https://scholar.google.com/citations?user=CkDoYbEAAAAJ"
-  impactstory      : # URL
-  # orcid            : # "http://orcid.org/yourorcidurl"
-  semantic         : # URL
- # pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
-  researchgate     : # URL
-
-  # Repositories and software development
-  bitbucket        : # Username - Update with your username on the site
-  codepen          : # Username
-  dribbble         : # Username
-  github           : "mutalibcs"
-  kaggle           : "mutalibcs"
-  stackoverflow    : # "15738917/abdul-mutalib" # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
-
-  # Social media
-  bluesky          : # "bsky.app" # Replace this with you Bluesky username
-  facebook         : # mutalibcs
-  flickr           : # Username
-  foursquare       : # Username
-  goodreads        : # Username
-  google_plus      : # Username
-  keybase          : # Username
-  instagram        : # Username
-  lastfm           : # Username
-  linkedin         : md-abdul-mutalib
-  mastodon         : # URL
-  medium           : # mutalibcs # URL
-  pinterest        : # Username
-  soundcloud       : # Username
-  steam            : # Username
-  telegram         : # https://t.me/mutalibcs # URL
-  tumblr           : # Username
-  twitter          : mutalibcs # Username for X / Twitter
-  vine             : # Username
-  weibo            : # Username
-  wikipedia        : # Username
-  xing             : # Username
-  youtube          : # Username
-  zhihu            : # Username
-
-# Publication Category - The following the list of publication categories and their headings
-publication_category:
-  books:
-    title: 'Books'
-  manuscripts:
-    title: 'Journal Articles'    
-  conferences:
-    title: 'Conference Papers'
+  avatar: "profile.png"
+  name: "Md Abdul Mutalib"
+  bio: "AI Enthusiast | Machine Learning & Deep Learning Researcher | Passionate about Medical Diagnosis & Computer Vision Projects"
+  location: "Sylhet, Bangladesh"
+  employer: "North East University Bangladesh"
+  email: "mutalib.cs@gmail.com"
+  googlescholar: "https://scholar.google.com/citations?user=CkDoYbEAAAAJ"
+  github: "mutalibcs"
+  kaggle: "mamutalib"
+  linkedin: "md-abdul-mutalib"
+  twitter: "mutalibcs"
 
 # Site Settings
-teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
-breadcrumbs              : false # true, false (default)
-words_per_minute         : 160
-future                   : true
-read_more                : "disabled" # if enabled, adds "Read more" links to excerpts
-talkmap_link             : false #change to true to add link to talkmap on talks page
+teaser: profile.png # filename of teaser fallback image in /images/
+breadcrumbs: true
+words_per_minute: 160
+future: true
+read_more: "enabled"
+talkmap_link: false
+
+# Comments (optional)
 comments:
-  provider               : # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
-  disqus:
-    shortname            :
-  discourse:
-    server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
-  facebook:
-    appid                :
-    num_posts            : # 5 (default)
-    colorscheme          : # "light" (default), "dark"
-staticman:
-  allowedFields          : ['name', 'email', 'url', 'message']
-  branch                 : "gh-pages" # "master", "gh-pages"
-  commitMessage          : "New comment."
-  filename               : comment-{@timestamp}
-  format                 : "yml"
-  moderation             : true
-  path                   : "_data/comments/{options.slug}"
-  requiredFields         : ['name', 'email', 'message']
-  transforms:
-    email                : "md5"
-  generatedFields:
-    date:
-      type               : "date"
-      options:
-        format           : "iso8601" # "iso8601" (default), "timestamp-seconds", "timestamp-milliseconds"
-atom_feed:
-  hide                   : true     # change to true to hide the RSS feed in the footer
-  path                   : # blank (default) uses feed.xml
+  provider: false # Disabled by default
 
+# SEO and Social Sharing
+google_site_verification: "Gqp3ofmVy7p9xE2oF4zjaIEZH7P-7sJOBo7tIxRdTqE"
+bing_site_verification: "3181071F5AF769F28523FD20F1F335FB"
+og_image: "/images/profile.png" # Default Open Graph/Twitter image
 
-# SEO Related
-google_site_verification : "Gqp3ofmVy7p9xE2oF4zjaIEZH7P-7sJOBo7tIxRdTqE"
-bing_site_verification   : "3181071F5AF769F28523FD20F1F335FB"
-alexa_site_verification  :
-yandex_site_verification :
-
-
-# Social Sharing
-twitter:
-  username               : mutalibcs
-facebook:
-  username               : # mutalibcs
-  app_id                 :
-  publisher              :
-og_image                 : /images/profile.png # Open Graph/Twitter default site image
-# For specifying social profiles
-# - https://developers.google.com/structured-data/customize/social-profiles
+# Social Profiles for Structured Data
 social:
-  type: Person  # Use 'Person' or 'Organization' depending on your site
-  name: Md Abdul Mutalib  # Name for structured data, useful if different from the site's name
+  type: Person
+  name: Md Abdul Mutalib
   links:
-    - https://twitter.com/mutalibcs       # Your Twitter profile
-    - https://linkedin.com/in/md-abdul-mutalib # Your LinkedIn profile
-    - https://github.com/mutalibcs      # Your GitHub profile
-    # Add additional social media links as needed
+    - https://twitter.com/mutalibcs
+    - https://linkedin.com/in/md-abdul-mutalib
+    - https://github.com/mutalibcs
 
-# # Analytics
-# analytics:
-#   provider               :  "false" # false (default), "google", "google-universal", "google-analytics-4", "custom"
-#   google:
-#     tracking_id          :
+# Analytics
 analytics:
-  provider               : "google-analytics-4" # Use "google" for Universal Analytics
+  provider: "google-analytics-4"
   google:
-    tracking_id          : "G-2RRX6MYX2N"
-
-
+    tracking_id: "G-2RRX6MYX2N" # Replace with your GA4 tracking ID
 
 # Reading Files
 include:
   - .htaccess
   - _pages
   - files
+  - images
+  - _posts 
 exclude:
   - "*.sublime-project"
   - "*.sublime-workspace"
@@ -175,53 +439,22 @@ exclude:
   - .github
   - .jekyll-assets-cache
   - .sass-cache
-  - assets/js/_main.js
-  - assets/js/plugins
-  - assets/js/vendor
-  - CHANGELOG
-  - Capfile
-  - config
-  - Dockerfile
-  - Gemfile
-  - Gruntfile.js
-  - gulpfile.js
-  - LICENSE
-  - local
-  - log
   - node_modules
-  - package.json*
-  - Rakefile
-  - README
-  - tmp
   - vendor
 keep_files:
   - .git
-  - .svn
 encoding: "utf-8"
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 
-
-# Conversion
+# Markdown Processing
 markdown: kramdown
 highlighter: rouge
-lsi: false
-excerpt_separator: "\n\n"
-incremental: false
-
-
-# Markdown Processing
 kramdown:
   input: GFM
-  hard_wrap: false
   auto_ids: true
-  footnote_nr: 1
-  entity_output: as_char
-  toc_levels: 1..6
   smart_quotes: lsquo,rsquo,ldquo,rdquo
-  enable_coderay: false
 
-
-# These settings control the types of collections used by the template
+# Collections
 collections:
   teaching:
     output: true
@@ -236,10 +469,8 @@ collections:
     output: true
     permalink: /:collection/:path/
 
-
-# These settings control how pages and collections are included in the site
+# Defaults for Pages and Collections
 defaults:
-  # _posts
   - scope:
       path: ""
       type: posts
@@ -247,115 +478,40 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
-      comments: true
       share: true
       related: true
-  # _pages
   - scope:
       path: ""
       type: pages
     values:
       layout: single
       author_profile: true
-  # _teaching
-  - scope:
-      path: ""
-      type: teaching
-    values:
-      layout: single
-      author_profile: true
-      share: true
-      comments: true
-  # _publications
-  - scope:
-      path: ""
-      type: publications
-    values:
-      layout: single
-      author_profile: true
-      share: true
-      comments: true
-  # _portfolio
-  - scope:
-      path: ""
-      type: portfolio
-    values:
-      layout: single
-      author_profile: true
-      share: true
-      comment: true
-  # _talks
-  - scope:
-      path: ""
-      type: talks
-    values:
-      layout: talk
-      author_profile: true
-      share: true
-
 
 # Sass/SCSS
 sass:
   sass_dir: _sass
-  style: compressed # http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
-
+  style: compressed
 
 # Outputting
 permalink: /:categories/:title/
-# paginate: 5 # amount of posts to show
-# paginate_path: /page:num/
-timezone: Etc/UTC # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-
+timezone: Etc/UTC
 
 # Plugins
 plugins:
   - jekyll-feed
-  - jekyll-gist
-  - jekyll-paginate
   - jekyll-sitemap
-  - jemoji
+  - jekyll-seo-tag # For enhanced SEO
   - jekyll-redirect-from
 
-# Mimic GitHub Pages with --safe
-whitelist:
-  - jekyll-feed
-  - jekyll-gist
-  - jekyll-paginate
-  - jekyll-sitemap
-  - jemoji
-
-
 # Archives
-#  Type
-#  - GitHub Pages compatible archive pages built with Liquid ~> type: liquid (default)
-#  - Jekyll Archives plugin archive pages ~> type: jekyll-archives
-#  Path (examples)
-#  - Archive page should exist at path when using Liquid method or you can
-#    expect broken links (especially with breadcrumbs enabled)
-#  - <base_path>/tags/my-awesome-tag/index.html ~> path: /tags/
-#  - <base_path/categories/my-awesome-category/index.html ~> path: /categories/
-#  - <base_path/my-awesome-category/index.html ~> path: /
 category_archive:
   type: liquid
   path: /categories/
 tag_archive:
   type: liquid
   path: /tags/
-# https://github.com/jekyll/jekyll-archives
-# jekyll-archives:
-#   enabled:
-#     - categories
-#     - tags
-#   layouts:
-#     category: archive-taxonomy
-#     tag: archive-taxonomy
-#   permalinks:
-#     category: /categories/:name/
-#     tag: /tags/:name/
-
 
 # HTML Compression
-# - http://jch.penibelst.de/
 compress_html:
   clippings: all
   ignore:

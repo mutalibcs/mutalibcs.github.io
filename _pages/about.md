@@ -8,8 +8,8 @@ redirect_from:
   - /home
   - /profile
 
-description: "Welcome to the personal website of Md. Abdul Mutalib, an AI researcher and software engineer specializing in deep learning applications in medical diagnosis."
-keywords: "Md Abdul Mutalib, Abdul Mutalib, AI Researcher, Software Engineer, Deep Learning, Machine Learning, Medical Diagnosis, NEUB, CRC Research Centre"
+description: "Welcome to the personal website of <b> Md. Abdul Mutalib<b>, an AI researcher and software engineer specializing in deep learning applications in medical diagnosis."
+keywords: "Md Abdul Mutalib, Abdul Mutalib, AI Researcher, mutalibcs Medical Diagnosis, NEUB, CRC Research Centre"
 ---
 
 # About Abdul Mutalib
