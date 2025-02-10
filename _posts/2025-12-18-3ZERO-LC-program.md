@@ -9,8 +9,6 @@ meta_description: "My journey through the 3ZERO Leadership Challenge, empowering
 
 ---
 
-# My 3ZERO Leadership Challenge Experience: Empowering Gen Z for a Better Future  
-
 ## Celebrating My Achievement: Completing the 3ZERO Leadership Challenge  
 
 I am thrilled to share that I have successfully completed the **4th 3ZERO Leadership Challenge (3ZLC) program**! This prestigious program was held on **August 30, 2024, at the SocialTech Summit 2024**, along with pre-online sessions.  
