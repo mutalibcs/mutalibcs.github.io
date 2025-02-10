@@ -1,9 +1,9 @@
 ---
 title: "Markdown Guide: Learn Markdown Syntax and Features"
-date: 2025-12-18
+date: 2025-01-18
 redirect_from: 
   - /markdown/
-permalink: /posts/2025/12/markdown-guide/
+permalink: /posts/2025/01/markdown-guide/
 tags:
   - markdown
   - markdown guide
