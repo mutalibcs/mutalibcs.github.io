@@ -9,8 +9,6 @@ meta_description: "My journey through the 3ZERO Leadership Challenge, empowering
 
 ---
 
-## Celebrating My Achievement: Completing the 3ZERO Leadership Challenge  
-
 I am thrilled to share that I have successfully completed the **4th 3ZERO Leadership Challenge (3ZLC) program**! This prestigious program was held on **August 30, 2024, at the SocialTech Summit 2024**, along with pre-online sessions.  
 As a recognition of my participation and successful completion of the program, I have been awarded a **certificate of achievement**. You can view my certificate [here](/files/3ZeroClub/Certificate.pdf).  
 
