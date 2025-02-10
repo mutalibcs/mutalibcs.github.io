@@ -14,6 +14,8 @@ meta_description: "My journey through the 3ZERO Leadership Challenge, empowering
 ## Celebrating My Achievement: Completing the 3ZERO Leadership Challenge  
 
 I am thrilled to share that I have successfully completed the **4th 3ZERO Leadership Challenge (3ZLC) program**! This prestigious program was held on **August 30, 2024, at the SocialTech Summit 2024**, along with pre-online sessions.  
+As a recognition of my participation and successful completion of the program, I have been awarded a **certificate of achievement**. You can view my certificate [here](/files/3ZeroClub/Certificate.pdf).  
+
 
 The **3ZERO initiative** is a global movement striving for a world with **Zero Exclusion, Zero Carbon, and Zero Poverty**. It addresses pressing global challenges such as climate change, economic disparities, and social injustices, aiming to create a sustainable and inclusive future for all. The initiative was launched in **2017 by Convergences**, a reflection, mobilisation, and advocacy platform. Since its inception, Convergences has organised **3ZERO Forums** in various countries to foster multi-actor dialogue and partnerships, facilitating the achievement of the **Sustainable Development Goals (SDGs)** and the 3ZERO objectives.  
 
