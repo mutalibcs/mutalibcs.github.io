@@ -424,6 +424,8 @@ analytics:
   google:
     tracking_id: "G-2RRX6MYX2N" # Replace with your GA4 tracking ID
 
+#Favicon
+favicon: "/images/favicon.ico"
 # Reading Files
 include:
   - .htaccess
