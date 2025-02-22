@@ -10,7 +10,7 @@ tags:
   - Academic Events
 meta_description: "My enriching experience at the International Congress on Recent Trends in Computer Science (ICRCS-2024), featuring insights from global researchers and professionals."
 ---
-# My Experience at ICRCS-2024
+<!-- # My Experience at ICRCS-2024 -->
 
 I had the amazing opportunity to participate in the **International Congress on Recent Trends in Computer Science (ICRCS-2024)**, a prestigious event that brought together researchers, academics, and professionals from around the globe. The conference served as a dynamic platform for advancing the field of computer science through knowledge sharing and collaboration.
 
