@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { toUrl } from '../utils/paths';
+---
+
+<BaseLayout
+  title="404 Page Not Found"
+  description="Page not found on Md Abdul Mutalib's Academic Research Portfolio."
+  canonicalUrl={null}
+>
+  <div class="container" style="text-align: center; padding: 4rem 1rem;">
+    <h1 style="font-size: 3rem; margin-bottom: 0.5rem; color: var(--accent-teal);">404</h1>
+    <h2 style="border: none; margin-top: 0; font-size: 1.5rem;">Page Not Found</h2>
+    <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 500px; margin: 1rem auto 2rem auto;">
+      The requested page could not be located. It may have moved during our migration to Astro.
+    </p>
+
+    <div style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
+      <a href={toUrl('/')} class="btn-primary">
+        <span>&larr; Return to Homepage</span>
+      </a>
+      <a href={toUrl('/publications/')} class="btn-secondary">
+        <span>Browse Publications</span>
+      </a>
+      <a href={toUrl('/cv/')} class="btn-secondary">
+        <span>View Academic CV</span>
+      </a>
+    </div>
+  </div>
+</BaseLayout>

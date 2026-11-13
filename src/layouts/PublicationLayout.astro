@@ -1,0 +1,158 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import ScholarMeta from '../components/ScholarMeta.astro';
+import CitationTools from '../components/CitationTools.astro';
+import { generateBibTeX, generatePlainCitation } from '../utils/citation';
+import { toUrl, toAbsoluteUrl, SITE_ORIGIN } from '../utils/paths';
+import type { CollectionEntry } from 'astro:content';
+
+export interface Props {
+  pub: CollectionEntry<'publications'>;
+}
+
+const { pub } = Astro.props;
+const data = pub.data;
+const slug = pub.id.replace(/\.md$/, '');
+const isSelf = (author: string) => author.toLowerCase().includes('mutalib');
+
+const canonicalUrl = toAbsoluteUrl(`/publication/${slug}/`);
+const bibtex = generateBibTeX(data, slug);
+const plainCitation = generatePlainCitation(data);
+
+const venueName = data.type === 'journal'
+  ? (data.journal || data.venue)
+  : (data.conference || data.venue);
+
+const scholarlyJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ScholarlyArticle',
+  headline: data.title,
+  name: data.title,
+  author: data.authors.map((name) => ({
+    '@type': 'Person',
+    name: name
+  })),
+  datePublished: data.date,
+  isPartOf: {
+    '@type': data.type === 'journal' ? 'Periodical' : (data.type === 'book' ? 'Book' : 'Conference'),
+    name: venueName
+  },
+  sameAs: data.publisherUrl || data.repositoryUrl || canonicalUrl,
+  description: data.summary
+};
+---
+
+<BaseLayout
+  title={data.title}
+  description={data.summary}
+  type="article"
+  canonicalUrl={canonicalUrl}
+  jsonLd={scholarlyJsonLd}
+>
+  <ScholarMeta
+    slot="head"
+    title={data.title}
+    authors={data.authors}
+    publicationDate={data.date}
+    venueTitle={venueName}
+    type={data.type}
+    isJournal={data.type === 'journal'}
+    volume={data.volume}
+    issue={data.issue}
+    pages={data.pages}
+    doi={data.doi}
+    pdfUrl={data.localPdf ? toAbsoluteUrl(data.localPdf) : undefined}
+    siteUrl={SITE_ORIGIN}
+  />
+
+  <article class="container">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" style="font-size: 0.88rem; margin-bottom: 1.5rem; color: var(--text-muted); line-height: 1.4;">
+      <a href={toUrl('/')}>Home</a> &gt; <a href={toUrl('/publications/')}>Publications</a> &gt; <span aria-current="page" style="color: var(--text-secondary);">{data.year} &bull; {data.title}</span>
+    </nav>
+
+    <header class="paper-header">
+      <div class="pub-meta-top">
+        <span class="pub-badge">
+          {data.type === 'journal' ? 'Journal Article' : data.type === 'book' ? 'Book Chapter' : 'Conference Paper'}
+        </span>
+        <span>&bull;</span>
+        <span>{data.year}</span>
+        {data.firstAuthor && (
+          <>
+            <span>&bull;</span>
+            <span style="color: var(--accent-teal); font-weight: 600;">First Author</span>
+          </>
+        )}
+      </div>
+
+      <h1 class="paper-title">{data.title}</h1>
+
+      <div class="paper-authors-list">
+        {data.authors.map((author, idx) => (
+          <span>
+            {isSelf(author) ? <strong class="author-self">{author}</strong> : <span>{author}</span>}
+            {idx < data.authors.length - 1 ? ', ' : ''}
+          </span>
+        ))}
+      </div>
+
+      <div class="paper-venue-line">
+        <strong>Venue:</strong> {data.venue}
+        {data.volume && ` | Vol. ${data.volume}`}
+        {data.issue && ` No. ${data.issue}`}
+        {data.pages && ` | pp. ${data.pages}`}
+        {data.location && ` | ${data.location}`}
+      </div>
+
+      {data.doi && (
+        <div style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1rem;">
+          <strong>DOI:</strong>{' '}
+          {data.publisherUrl ? (
+            <a href={data.publisherUrl} target="_blank" rel="noopener noreferrer">{data.doi}</a>
+          ) : (
+            <span>{data.doi}</span>
+          )}
+        </div>
+      )}
+
+      <div class="paper-action-toolbar">
+        {data.localPdf && (
+          <a href={toUrl(data.localPdf)} target="_blank" rel="noopener noreferrer" class="pub-action-btn primary-action">
+            <span>📄 View {data.pdfVersionLabel || 'Full Text (PDF)'}</span>
+          </a>
+        )}
+
+        {data.publisherUrl && (
+          <a href={data.publisherUrl} target="_blank" rel="noopener noreferrer" class="pub-action-btn">
+            <span>Official Publisher Page &rarr;</span>
+          </a>
+        )}
+
+        {data.repositoryUrl && (
+          <a href={data.repositoryUrl} target="_blank" rel="noopener noreferrer" class="pub-action-btn">
+            <span>ResearchGate Record</span>
+          </a>
+        )}
+
+        {!data.localPdf && (
+          <a href={`mailto:mutalib.cs@gmail.com?subject=Author%20Copy%20Request%20-%20${encodeURIComponent(data.title)}`} class="pub-action-btn">
+            <span>✉️ Request Author Copy</span>
+          </a>
+        )}
+
+        <a href={`#citation-section-${slug}`} class="pub-action-btn">
+          <span>Cite this Paper</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Main Markdown Body (Abstract, Research Brief, etc.) -->
+    <div class="paper-content-body">
+      <slot />
+    </div>
+
+    <!-- Citation Tools -->
+    <CitationTools bibtex={bibtex} plainCitation={plainCitation} slug={slug} />
+  </article>
+</BaseLayout>

@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PublicationEntry from '../../components/PublicationEntry.astro';
+import { getCollection } from 'astro:content';
+
+const allPubs = await getCollection('publications');
+allPubs.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+// Collect all unique topics dynamically from actual records
+const topicSet = new Set<string>();
+allPubs.forEach((p) => {
+  p.data.topics.forEach((t) => topicSet.add(t));
+});
+const uniqueTopics = Array.from(topicSet).sort();
+---
+
+<BaseLayout
+  title="Publications"
+  description="Peer-reviewed publications, conference proceedings, and research papers by Md Abdul Mutalib in Computer Vision, Medical AI, and Deep Learning."
+>
+  <div class="container">
+    <header style="margin-bottom: 2rem;">
+      <h1 style="margin-bottom: 0.5rem;">Publications & Preprints</h1>
+      <p style="font-size: 1.05rem; color: var(--text-secondary); margin: 0; max-width: 720px;">
+        Peer-reviewed journal articles, conference proceedings, and systematic reviews in Medical Image Analysis, Deep Learning, and Computer Vision.
+      </p>
+    </header>
+
+    <!-- Search & Filter Controls -->
+    <section class="filter-search-container" aria-label="Publication search and topic filters">
+      <div class="search-input-wrapper">
+        <label for="pub-search" class="visually-hidden" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;">Search publications</label>
+        <input
+          type="search"
+          id="pub-search"
+          class="search-input"
+          placeholder="Search by title, author, venue, or keyword..."
+          aria-label="Search publications"
+        />
+      </div>
+
+      <div class="filter-controls-row">
+        <span style="font-size: 0.82rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">Filter by Topic:</span>
+        <button
+          type="button"
+          class="filter-btn active"
+          data-topic="all"
+          aria-pressed="true"
+        >
+          All ({allPubs.length})
+        </button>
+        {uniqueTopics.map((topic) => (
+          <button
+            type="button"
+            class="filter-btn"
+            data-topic={topic.toLowerCase()}
+            aria-pressed="false"
+          >
+            {topic}
+          </button>
+        ))}
+        <button type="button" id="reset-filters" class="reset-filter-btn" style="display: none;">Reset filters</button>
+      </div>
+    </section>
+
+    <!-- Publication Cards (rendered in static HTML) -->
+    <div id="publications-list" aria-live="polite">
+      {allPubs.map((pub) => (
+        <PublicationEntry pub={pub} />
+      ))}
+    </div>
+
+    <!-- Empty Results State -->
+    <div id="empty-state" class="empty-results-state" style="display: none;">
+      <p style="font-size: 1.15rem; font-weight: 500; margin-bottom: 0.5rem;">No matching publications found.</p>
+      <p style="font-size: 0.9rem;">Try adjusting your search terms or clearing the selected topic filter.</p>
+      <button type="button" id="clear-search-btn" class="pub-action-btn" style="margin-top: 0.5rem;">
+        Clear search & filters
+      </button>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  function initPubFilters() {
+    const searchInput = document.getElementById('pub-search') as HTMLInputElement | null;
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const resetBtn = document.getElementById('reset-filters');
+    const clearSearchBtn = document.getElementById('clear-search-btn');
+    const cards = document.querySelectorAll('#publications-list .pub-card');
+    const emptyState = document.getElementById('empty-state');
+
+    let activeTopic = 'all';
+    let searchQuery = '';
+
+    function setActiveButton(topic: string) {
+      filterButtons.forEach((btn) => {
+        const btnTopic = btn.getAttribute('data-topic') || '';
+        const isMatch = btnTopic === topic;
+        btn.classList.toggle('active', isMatch);
+        btn.setAttribute('aria-pressed', isMatch ? 'true' : 'false');
+      });
+    }
+
+    // Read topic filter from URL param if available
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialTopic = urlParams.get('topic');
+    if (initialTopic) {
+      activeTopic = initialTopic.toLowerCase();
+      setActiveButton(activeTopic);
+    }
+
+    function applyFilters() {
+      let visibleCount = 0;
+      cards.forEach((card) => {
+        const title = card.getAttribute('data-title') || '';
+        const authors = card.getAttribute('data-authors') || '';
+        const venue = card.getAttribute('data-venue') || '';
+        const topics = card.getAttribute('data-topics') || '';
+        const fullContent = `${title} ${authors} ${venue} ${topics}`;
+
+        const matchesSearch = !searchQuery || fullContent.includes(searchQuery);
+        const matchesTopic = activeTopic === 'all' || topics.includes(activeTopic);
+
+        if (matchesSearch && matchesTopic) {
+          (card as HTMLElement).style.display = '';
+          visibleCount++;
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+
+      if (emptyState) {
+        emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
+
+      if (resetBtn) {
+        resetBtn.style.display = activeTopic !== 'all' || searchQuery ? 'inline-block' : 'none';
+      }
+    }
+
+    if (searchInput) {
+      // Keystroke searching does NOT push to browser history
+      searchInput.addEventListener('input', () => {
+        searchQuery = searchInput.value.trim().toLowerCase();
+        applyFilters();
+      });
+    }
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const topic = btn.getAttribute('data-topic') || 'all';
+        if (topic === activeTopic) return;
+
+        activeTopic = topic;
+        setActiveButton(activeTopic);
+
+        // Update URL search param and push state for history navigation
+        const newUrl = new URL(window.location.href);
+        if (activeTopic === 'all') {
+          newUrl.searchParams.delete('topic');
+        } else {
+          newUrl.searchParams.set('topic', activeTopic);
+        }
+        window.history.pushState({ topic: activeTopic }, '', newUrl.toString());
+
+        applyFilters();
+      });
+    });
+
+    // Support browser Back/Forward navigation
+    window.addEventListener('popstate', (e) => {
+      const stateTopic = e.state?.topic;
+      const paramTopic = new URLSearchParams(window.location.search).get('topic');
+      activeTopic = (stateTopic || paramTopic || 'all').toLowerCase();
+      setActiveButton(activeTopic);
+      applyFilters();
+    });
+
+    function resetAll() {
+      if (searchInput) searchInput.value = '';
+      searchQuery = '';
+      activeTopic = 'all';
+      setActiveButton('all');
+
+      const newUrl = new URL(window.location.href);
+      newUrl.searchParams.delete('topic');
+      window.history.pushState({ topic: 'all' }, '', newUrl.toString());
+
+      applyFilters();
+    }
+
+    if (resetBtn) resetBtn.addEventListener('click', resetAll);
+    if (clearSearchBtn) clearSearchBtn.addEventListener('click', resetAll);
+
+    // Initial filter run
+    applyFilters();
+  }
+
+  initPubFilters();
+</script>

@@ -1,0 +1,43 @@
+---
+import { profile } from '../data/profile';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-top">
+      <div>
+        <strong style="display: block; font-size: 1rem; color: var(--text-primary); margin-bottom: 0.35rem;">
+          {profile.name}
+        </strong>
+        <span style="display: block; max-width: 480px; font-size: 0.88rem;">
+          {profile.affiliation} &bull; {profile.department}
+        </span>
+      </div>
+
+      <ul class="footer-links" aria-label="Academic & Professional Links">
+        {profile.profiles.map((p) => (
+          <li>
+            <a href={p.url} target="_blank" rel="noopener noreferrer">
+              {p.label}
+            </a>
+          </li>
+        ))}
+        <li>
+          <a href={`mailto:${profile.email}`}>Email</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer-bottom">
+      <div>
+        &copy; {currentYear} {profile.name}.
+      </div>
+      <div>
+        <a href="#top" style="text-decoration: none;">↑ Back to top</a>
+      </div>
+    </div>
+  </div>
+</footer>
+

@@ -1,0 +1,24 @@
+# Build output & caches
+dist/
+.astro/
+_site/
+.sass-cache/
+
+# Dependencies (Commit package-lock.json, ignore node_modules)
+node_modules/
+
+# Sensitive files & credentials
+.env
+.env.*
+*.env
+.admin-credentials.json
+files/
+
+# Operating System & IDE debris
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.gemini/
+.ruby-lsp/
+*.log

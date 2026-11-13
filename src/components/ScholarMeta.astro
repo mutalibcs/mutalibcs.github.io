@@ -1,0 +1,69 @@
+---
+export interface Props {
+  title: string;
+  authors: string[];
+  publicationDate: string; // YYYY-MM-DD, YYYY-MM, or YYYY
+  venueTitle: string;
+  type?: 'journal' | 'conference' | 'preprint' | 'book';
+  isJournal?: boolean;
+  volume?: number | string;
+  issue?: number | string;
+  pages?: string;
+  doi?: string;
+  pdfUrl?: string; // Production absolute URL to local PDF
+  siteUrl: string;
+}
+
+const {
+  title,
+  authors,
+  publicationDate,
+  venueTitle,
+  type = 'journal',
+  isJournal = false,
+  volume,
+  issue,
+  pages,
+  doi,
+  pdfUrl,
+  siteUrl
+} = Astro.props;
+
+// Split pages into first and last page if applicable
+let firstPage = '';
+let lastPage = '';
+if (pages) {
+  const parts = pages.split('-');
+  firstPage = parts[0]?.trim() || '';
+  lastPage = parts[1]?.trim() || '';
+}
+
+// Ensure pdfUrl is absolute if provided
+const absolutePdfUrl = pdfUrl
+  ? pdfUrl.startsWith('http')
+    ? pdfUrl
+    : new URL(pdfUrl, siteUrl).toString()
+  : undefined;
+---
+
+<!-- Google Scholar / Highwire Press Meta Tags -->
+<meta name="citation_title" content={title} />
+{authors.map((author) => (
+  <meta name="citation_author" content={author} />
+))}
+<meta name="citation_publication_date" content={publicationDate.replace(/-/g, '/')} />
+
+{isJournal || type === 'journal' ? (
+  <meta name="citation_journal_title" content={venueTitle} />
+) : type === 'book' ? (
+  <meta name="citation_inbook_title" content={venueTitle} />
+) : (
+  <meta name="citation_conference_title" content={venueTitle} />
+)}
+
+{volume && <meta name="citation_volume" content={String(volume)} />}
+{issue && <meta name="citation_issue" content={String(issue)} />}
+{firstPage && <meta name="citation_firstpage" content={firstPage} />}
+{lastPage && <meta name="citation_lastpage" content={lastPage} />}
+{doi && <meta name="citation_doi" content={doi} />}
+{absolutePdfUrl && <meta name="citation_pdf_url" content={absolutePdfUrl} />}

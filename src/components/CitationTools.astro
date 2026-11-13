@@ -1,0 +1,128 @@
+---
+import { toUrl } from '../utils/paths';
+
+export interface Props {
+  bibtex: string;
+  plainCitation: string;
+  slug: string;
+}
+
+const { bibtex, plainCitation, slug } = Astro.props;
+---
+
+<div class="citation-box" id={`citation-section-${slug}`}>
+  <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
+    <h3 style="margin: 0; font-size: 1.1rem;">Cite this Research</h3>
+    <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+      <button
+        type="button"
+        class="pub-action-btn"
+        id={`btn-copy-citation-${slug}`}
+        data-text={plainCitation}
+        aria-label="Copy plain text citation to clipboard"
+      >
+        <span>📋 Copy Citation</span>
+      </button>
+
+      <button
+        type="button"
+        class="pub-action-btn"
+        id={`btn-copy-bibtex-${slug}`}
+        data-bibtex={bibtex}
+        aria-label="Copy BibTeX code to clipboard"
+      >
+        <span>🏷️ Copy BibTeX</span>
+      </button>
+
+      <a
+        href={toUrl(`/publication/${slug}/cite.bib`)}
+        download={`${slug}.bib`}
+        class="pub-action-btn"
+        aria-label="Download BibTeX file"
+      >
+        <span>⬇️ Download .bib</span>
+      </a>
+
+      <span class="toast-feedback" id={`feedback-${slug}`} role="status" aria-live="polite"></span>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 0.75rem;">
+    <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); text-transform: uppercase;">Bibliographic Entry:</span>
+    <p style="font-size: 0.92rem; line-height: 1.5; margin: 0.25rem 0 0.75rem 0;" id={`text-citation-${slug}`}>
+      {plainCitation}
+    </p>
+  </div>
+
+  <div>
+    <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); text-transform: uppercase;">BibTeX Entry:</span>
+    <pre class="citation-pre" tabindex="0" aria-label="BibTeX record code">{bibtex}</pre>
+  </div>
+
+  <!-- Fallback selectable area if clipboard API is blocked -->
+  <div id={`fallback-box-${slug}`} style="display: none; margin-top: 0.75rem;">
+    <label for={`fallback-textarea-${slug}`} style="font-size: 0.82rem; font-weight: 600;">Manual selection copy:</label>
+    <textarea
+      id={`fallback-textarea-${slug}`}
+      readonly
+      rows="4"
+      style="width: 100%; font-family: var(--font-mono); font-size: 0.8rem; padding: 0.5rem; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); background: var(--bg-canvas); color: var(--text-primary);"
+    ></textarea>
+  </div>
+</div>
+
+<script define:vars={{ slug }}>
+  function setupCitationControls() {
+    const feedback = document.getElementById(`feedback-${slug}`);
+    const fallbackBox = document.getElementById(`fallback-box-${slug}`);
+    const fallbackText = document.getElementById(`fallback-textarea-${slug}`);
+
+    function notify(msg) {
+      if (!feedback) return;
+      feedback.textContent = msg;
+      feedback.classList.add('visible');
+      setTimeout(() => {
+        feedback.classList.remove('visible');
+      }, 2800);
+    }
+
+    async function copyToClipboard(text, successMsg) {
+      if (navigator.clipboard && window.isSecureContext) {
+        try {
+          await navigator.clipboard.writeText(text);
+          notify(successMsg);
+          return;
+        } catch (e) {
+          // fallback below
+        }
+      }
+      // Clipboard fallback
+      if (fallbackBox && fallbackText) {
+        fallbackBox.style.display = 'block';
+        fallbackText.value = text;
+        fallbackText.focus();
+        fallbackText.select();
+        notify('Press Ctrl+C / Cmd+C to copy');
+      }
+    }
+
+    const btnCitation = document.getElementById(`btn-copy-citation-${slug}`);
+    if (btnCitation) {
+      btnCitation.addEventListener('click', () => {
+        const text = btnCitation.getAttribute('data-text') || '';
+        copyToClipboard(text, '✓ Citation copied!');
+      });
+    }
+
+    const btnBibtex = document.getElementById(`btn-copy-bibtex-${slug}`);
+    if (btnBibtex) {
+      btnBibtex.addEventListener('click', () => {
+        const text = btnBibtex.getAttribute('data-bibtex') || '';
+        copyToClipboard(text, '✓ BibTeX copied!');
+      });
+    }
+  }
+
+  setupCitationControls();
+</script>
+

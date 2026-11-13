@@ -1,0 +1,48 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SeoHead from '../components/SeoHead.astro';
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  canonicalUrl?: string | null;
+  type?: 'website' | 'article' | 'profile';
+  image?: string;
+  jsonLd?: Record<string, any>;
+}
+
+const props = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Prevent theme flash -->
+    <script is:inline>
+      (function () {
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+          document.documentElement.setAttribute('data-theme', storedTheme);
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      })();
+    </script>
+
+    <SeoHead {...props} />
+    <slot name="head" />
+  </head>
+  <body id="top">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <Header />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+

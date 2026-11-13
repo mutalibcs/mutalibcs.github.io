@@ -1,0 +1,73 @@
+---
+import { toUrl, toAbsoluteUrl } from '../utils/paths';
+
+export interface Props {
+  title: string;
+  description: string;
+  canonicalUrl?: string | null;
+  type?: 'website' | 'article' | 'profile';
+  image?: string;
+  jsonLd?: Record<string, any>;
+}
+
+const {
+  title,
+  description,
+  canonicalUrl,
+  type = 'website',
+  image = '/profile.png',
+  jsonLd
+} = Astro.props;
+
+const is404 = title.includes('404') || Astro.url.pathname === '/404' || Astro.url.pathname === '/404.html' || canonicalUrl === null;
+
+const siteTitle = "Md Abdul Mutalib | Academic Research Portfolio";
+const fullTitle = title === "Home" ? siteTitle : `${title} | Md Abdul Mutalib`;
+const absoluteImageUrl = image.startsWith('http') ? image : toAbsoluteUrl(image);
+
+// Determine canonical URL: omit completely on 404
+let resolvedCanonical: string | null = null;
+if (!is404) {
+  if (typeof canonicalUrl === 'string') {
+    resolvedCanonical = canonicalUrl.startsWith('http') ? canonicalUrl : toAbsoluteUrl(canonicalUrl);
+  } else {
+    resolvedCanonical = toAbsoluteUrl(Astro.url.pathname);
+  }
+}
+---
+
+<!-- Core Meta Tags -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{fullTitle}</title>
+<meta name="title" content={fullTitle} />
+<meta name="description" content={description} />
+{resolvedCanonical && <link rel="canonical" href={resolvedCanonical} />}
+{is404 && <meta name="robots" content="noindex, nofollow" />}
+
+<!-- Favicons & Manifest -->
+<link rel="icon" type="image/x-icon" href={toUrl('/favicon.ico')} />
+<link rel="icon" type="image/svg+xml" href={toUrl('/icons/favicon.svg')} />
+<link rel="icon" type="image/png" sizes="32x32" href={toUrl('/icons/favicon-32x32.png')} />
+<link rel="apple-touch-icon" sizes="180x180" href={toUrl('/icons/apple-touch-icon-180x180.png')} />
+<link rel="manifest" href={toUrl('/manifest.json')} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+{resolvedCanonical && <meta property="og:url" content={resolvedCanonical} />}
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={absoluteImageUrl} />
+<meta property="og:site_name" content="Md Abdul Mutalib" />
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary" />
+{resolvedCanonical && <meta name="twitter:url" content={resolvedCanonical} />}
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={absoluteImageUrl} />
+
+<!-- Structured Data (JSON-LD) -->
+{jsonLd && !is404 && (
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+)}

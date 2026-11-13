@@ -1,0 +1,20 @@
+---
+import { getCollection, render } from 'astro:content';
+import PublicationLayout from '../../../layouts/PublicationLayout.astro';
+
+export async function getStaticPaths() {
+  const publications = await getCollection('publications');
+  return publications.map((pub) => ({
+    params: { slug: pub.id.replace(/\.md$/, '') },
+    props: { pub },
+  }));
+}
+
+const { pub } = Astro.props;
+const { Content } = await render(pub);
+---
+
+<PublicationLayout pub={pub}>
+  <Content />
+</PublicationLayout>
+

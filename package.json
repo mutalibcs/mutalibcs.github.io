@@ -1,0 +1,27 @@
+{
+  "name": "mutalibcs-academic-portfolio",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "node --import tsx scripts/generate_redirects.ts && astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "validate": "node --import tsx scripts/validate.ts",
+    "test": "npm run check && npm run build && npm run validate"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^7.4.11",
+    "typescript": "^5.7.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.9",
+    "tsx": "^4.19.3"
+  }
+}

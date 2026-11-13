@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { profile } from '../../data/profile';
+---
+
+<BaseLayout
+  title="Contact"
+  description="Contact information and academic profiles for Md Abdul Mutalib — Harbin Institute of Technology, Shenzhen."
+>
+  <div class="container">
+    <header style="margin-bottom: 2rem;">
+      <h1 style="margin-bottom: 0.5rem;">Contact & Academic Information</h1>
+      <p style="font-size: 1.05rem; color: var(--text-secondary); margin: 0; max-width: 650px;">
+        Open to research collaborations, academic discussions, prospective PhD supervision opportunities, and scientific inquiries.
+      </p>
+    </header>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h2 class="contact-card-title">Primary Email</h2>
+        <p style="margin: 0.5rem 0 0 0; font-size: 1rem;">
+          <a href={`mailto:${profile.email}`} style="font-weight: 600; font-size: 1.1rem;">
+            {profile.email}
+          </a>
+          <span style="display: block; font-size: 0.88rem; color: var(--text-muted); margin-top: 0.35rem;">
+            Best method for academic inquiries, reviews, and collaboration proposals.
+          </span>
+        </p>
+      </div>
+
+      <div class="contact-card">
+        <h2 class="contact-card-title">Institutional Affiliation</h2>
+        <p style="margin: 0.5rem 0 0 0; font-size: 0.95rem; line-height: 1.6;">
+          <strong>{profile.name}</strong><br />
+          {profile.researchCenter}<br />
+          {profile.department}<br />
+          {profile.affiliation}<br />
+          {profile.location}
+        </p>
+      </div>
+    </div>
+
+    <section style="margin-top: 2.5rem;">
+      <h2>Scholarly & Professional Profiles</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem;">
+        {profile.profiles.map((p) => (
+          <a
+            href={p.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-card"
+            style="text-decoration: none; padding: 1.15rem; display: block;"
+          >
+            <strong style="display: block; font-size: 1rem; color: var(--accent-teal); margin-bottom: 0.2rem;">
+              {p.label} &rarr;
+            </strong>
+            <span style="font-size: 0.82rem; color: var(--text-muted); word-break: break-all;">
+              Verified profile
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section style="margin-top: 2.5rem;">
+      <h2>Campus Location</h2>
+      <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1.25rem;">
+        <p style="margin: 0 0 0.85rem 0; font-weight: 500;">
+          📍 Harbin Institute of Technology, Shenzhen (HITSZ) — Shenzhen, Guangdong, China
+        </p>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.814720887387!2d113.96844638300675!3d22.58603197208056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3403f26280c42af7%3A0x8d21a53a479fa4ca!2sHarbin%20Institute%20of%20Technology%20Shenzhen%20Graduate%20School%20%EF%BC%88Southwest%20Gate%EF%BC%89!5e0!3m2!1sen!2shk!4v1765526145238!5m2!1sen!2shk"
+          width="100%"
+          height="320"
+          style="border: 0; border-radius: 6px;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Harbin Institute of Technology, Shenzhen location map"
+        ></iframe>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+

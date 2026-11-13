@@ -1,0 +1,112 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { toUrl } from '../utils/paths';
+
+export interface Props {
+  pub: CollectionEntry<'publications'>;
+  featuredHighlight?: boolean;
+}
+
+const { pub, featuredHighlight = false } = Astro.props;
+const data = pub.data;
+const slug = pub.id.replace(/\.md$/, '');
+const isSelf = (author: string) => author.toLowerCase().includes('mutalib');
+
+const typeLabel = data.type === 'journal'
+  ? 'Journal Article'
+  : data.type === 'book'
+  ? 'Book Chapter'
+  : 'Conference Paper';
+---
+
+<article
+  class:list={['pub-card', { 'featured-card': featuredHighlight || data.featured }]}
+  data-title={data.title.toLowerCase()}
+  data-authors={data.authors.join(' ').toLowerCase()}
+  data-venue={data.venue.toLowerCase()}
+  data-topics={data.topics.join(' ').toLowerCase()}
+  data-year={data.year}
+  data-type={data.type}
+>
+  <div class="pub-meta-top">
+    <span class="pub-badge">{typeLabel}</span>
+    <span>&bull;</span>
+    <span>{data.year}</span>
+    {data.firstAuthor && (
+      <>
+        <span>&bull;</span>
+        <span style="color: var(--accent-teal); font-weight: 600;">First Author</span>
+      </>
+    )}
+    {data.featured && (
+      <>
+        <span>&bull;</span>
+        <span style="color: var(--accent-teal); font-weight: 600;">★ Featured</span>
+      </>
+    )}
+  </div>
+
+  <h3 class="pub-title">
+    <a href={toUrl(`/publication/${slug}/`)}>{data.title}</a>
+  </h3>
+
+  <div class="pub-authors">
+    {data.authors.map((author, idx) => (
+      <span>
+        {isSelf(author) ? <strong class="author-self">{author}</strong> : <span>{author}</span>}
+        {idx < data.authors.length - 1 ? ', ' : ''}
+      </span>
+    ))}
+  </div>
+
+  <div class="pub-venue">
+    {data.venue}
+    {data.volume && `, Vol. ${data.volume}`}
+    {data.issue && `, No. ${data.issue}`}
+    {data.pages && `, pp. ${data.pages}`}
+  </div>
+
+  <p class="pub-summary">
+    {data.summary}
+  </p>
+
+  <div class="pub-topics" aria-label="Research Topics">
+    {data.topics.map((t) => (
+      <span class="pub-topic-tag">{t}</span>
+    ))}
+  </div>
+
+  <div class="pub-actions">
+    <a href={toUrl(`/publication/${slug}/`)} class="pub-action-btn primary-action">
+      <span>Read Abstract & Brief &rarr;</span>
+    </a>
+
+    {data.localPdf && (
+      <a href={toUrl(data.localPdf)} target="_blank" rel="noopener noreferrer" class="pub-action-btn">
+        <span>📄 {data.pdfVersionLabel || 'Full Text (PDF)'}</span>
+      </a>
+    )}
+
+    {data.publisherUrl && (
+      <a href={data.publisherUrl} target="_blank" rel="noopener noreferrer" class="pub-action-btn">
+        <span>Publisher Link</span>
+      </a>
+    )}
+
+    {data.repositoryUrl && (
+      <a href={data.repositoryUrl} target="_blank" rel="noopener noreferrer" class="pub-action-btn">
+        <span>ResearchGate</span>
+      </a>
+    )}
+
+    {!data.localPdf && (
+      <a href={`mailto:mutalib.cs@gmail.com?subject=Author%20Copy%20Request%20-%20${encodeURIComponent(data.title)}`} class="pub-action-btn">
+        <span>✉️ Request Author Copy</span>
+      </a>
+    )}
+
+    <a href={toUrl(`/publication/${slug}/#citation-section-${slug}`)} class="pub-action-btn">
+      <span>Cite</span>
+    </a>
+  </div>
+</article>

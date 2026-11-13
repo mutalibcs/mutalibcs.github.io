@@ -1,0 +1,234 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PublicationEntry from '../components/PublicationEntry.astro';
+import { profile } from '../data/profile';
+import { getCollection } from 'astro:content';
+import { toUrl, toAbsoluteUrl } from '../utils/paths';
+
+const allPubs = await getCollection('publications');
+allPubs.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+// Lead paper: explicitly selected via isLead: true in frontmatter, or fallback to first firstAuthor paper
+const leadPub = allPubs.find((p) => p.data.isLead) || allPubs.find((p) => p.data.firstAuthor) || allPubs[0];
+const leadSlug = leadPub.id.replace(/\.md$/, '');
+const isLeadAuthorSelf = (author: string) => author.toLowerCase().includes('mutalib');
+
+// Remaining featured papers (compact cards)
+const remainingFeaturedPubs = allPubs.filter((p) => p.id !== leadPub.id && p.data.featured);
+
+const profileJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  mainEntity: {
+    '@type': 'Person',
+    name: profile.name,
+    jobTitle: profile.role,
+    worksFor: {
+      '@type': 'EducationalOrganization',
+      name: profile.affiliation
+    },
+    alumniOf: [
+      {
+        '@type': 'EducationalOrganization',
+        name: 'North East University Bangladesh'
+      }
+    ],
+    email: `mailto:${profile.email}`,
+    url: toAbsoluteUrl('/'),
+    image: toAbsoluteUrl('/profile.png'),
+    sameAs: profile.profiles.map((p) => p.url),
+    knowsAbout: profile.interests
+  }
+};
+---
+
+<BaseLayout
+  title="Home"
+  description={`${profile.name} — ${profile.role} at ${profile.affiliation}. Research in Computer Vision, Medical AI, and Deep Learning.`}
+  type="profile"
+  jsonLd={profileJsonLd}
+>
+  <div class="container">
+    <!-- 1. Header / Intro: Name, Current Affiliation, Brief 2-Sentence Intro, and Modest Portrait -->
+    <section class="hero-section" aria-label="Researcher Introduction">
+      <div class="hero-header-row">
+        <div class="hero-title-group">
+          <div class="status-badge">
+            <span class="status-dot"></span>
+            <span>{profile.statusPill}</span>
+          </div>
+
+          <h1 class="hero-name">{profile.name}</h1>
+          <div class="hero-affiliation">
+            <strong>{profile.affiliation}</strong> &bull; {profile.researchCenter}
+          </div>
+        </div>
+
+        <div class="hero-portrait-col">
+          <div class="portrait-wrapper">
+            <img
+              src={toUrl('/profile.png')}
+              alt="Portrait of Md Abdul Mutalib"
+              class="portrait-img"
+              width="180"
+              height="225"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
+        </div>
+      </div>
+
+      <p class="hero-bio">
+        {profile.bioIntroduction}
+      </p>
+
+      <div class="hero-actions">
+        <a href="#lead-research" class="btn-primary">
+          <span>Lead Research &darr;</span>
+        </a>
+        <a href={toUrl('/publications/')} class="btn-secondary">
+          <span>All Publications ({allPubs.length})</span>
+        </a>
+        <a href={toUrl('/cv/')} class="btn-secondary">
+          <span>Curriculum Vitae</span>
+        </a>
+        <a href="#contact-connect" class="btn-secondary">
+          <span>Contact</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 2. Lead Publication: Immediate prominence following introduction -->
+    <section class="lead-research-section" id="lead-research" aria-label="Lead Research Publication">
+      <div class="section-header-row" style="margin-bottom: 0.85rem;">
+        <h2 class="section-heading" style="margin: 0; font-size: 1.45rem;">Lead Research Publication</h2>
+        <span class="pub-badge" style="font-weight: 600;">★ Featured First-Author Study</span>
+      </div>
+
+      <article class="lead-pub-card">
+        <div class="pub-meta-top">
+          <span class="pub-badge">{leadPub.data.type === 'journal' ? 'Journal Article' : 'Conference Paper'}</span>
+          <span>&bull;</span>
+          <span>{leadPub.data.year}</span>
+          <span>&bull;</span>
+          <span style="color: var(--accent-teal); font-weight: 600;">First Author</span>
+          <span>&bull;</span>
+          <span>{leadPub.data.venue}</span>
+        </div>
+
+        <h3 class="pub-title" style="font-size: 1.35rem; margin: 0.55rem 0;">
+          <a href={toUrl(`/publication/${leadSlug}/`)}>{leadPub.data.title}</a>
+        </h3>
+
+        <div class="pub-authors" style="margin-bottom: 0.75rem; font-size: 0.92rem;">
+          {leadPub.data.authors.map((author, idx) => (
+            <span>
+              {isLeadAuthorSelf(author) ? <strong class="author-self">{author}</strong> : <span>{author}</span>}
+              {idx < leadPub.data.authors.length - 1 ? ', ' : ''}
+            </span>
+          ))}
+        </div>
+
+        <!-- Tight model formulation answering research question and verified key result -->
+        <div class="lead-pub-highlight-box">
+          <strong style="display: block; color: var(--accent-teal); margin-bottom: 0.25rem;">Core Research Question & Key Result:</strong>
+          We tested whether removing image noise before classification helped a model identify pneumonia in chest X-rays. On the study dataset, accuracy rose from <strong>86.1% to 92.9%</strong> (an increase of 6.8 percentage points), with a <strong>90.9% balanced accuracy</strong> and <strong>94.6% F1-score</strong>.
+        </div>
+
+        <p class="pub-summary" style="margin-bottom: 0.85rem; color: var(--text-secondary); font-size: 0.94rem;">
+          {leadPub.data.summary}
+        </p>
+
+        <div class="pub-actions">
+          <a href={toUrl(`/publication/${leadSlug}/`)} class="pub-action-btn primary-action">
+            <span>Read Paper & Research Brief &rarr;</span>
+          </a>
+
+          <a href={leadPub.data.publisherUrl} target="_blank" rel="noopener noreferrer" class="pub-action-btn">
+            <span>Publisher DOI</span>
+          </a>
+
+          {leadPub.data.localPdf ? (
+            <a href={toUrl(leadPub.data.localPdf)} target="_blank" rel="noopener noreferrer" class="pub-action-btn">
+              <span>📄 {leadPub.data.pdfVersionLabel || 'Full Text (PDF)'}</span>
+            </a>
+          ) : (
+            <a href={`mailto:${profile.email}?subject=Author%20Copy%20Request%20-%20${encodeURIComponent(leadPub.data.title)}`} class="pub-action-btn">
+              <span>✉️ Request Author Copy</span>
+            </a>
+          )}
+
+          <a href={toUrl(`/publication/${leadSlug}/#citation-section-${leadSlug}`)} class="pub-action-btn">
+            <span>Cite this Paper</span>
+          </a>
+        </div>
+      </article>
+    </section>
+
+    <!-- 3. Remaining Featured Research: Compact entries for MRI study and Hand-gesture review -->
+    <section class="featured-section" id="other-research" aria-label="Other Featured Research">
+      <div class="section-header-row">
+        <h2 class="section-heading" style="margin-top: 0; font-size: 1.45rem;">Additional Featured Research</h2>
+        <a href={toUrl('/publications/')} class="section-view-all">View all publications ({allPubs.length}) &rarr;</a>
+      </div>
+
+      <div>
+        {remainingFeaturedPubs.map((pub) => (
+          <PublicationEntry pub={pub} featuredHighlight={false} />
+        ))}
+      </div>
+    </section>
+
+    <!-- 4. CV, Contact, and External Profiles: Direct links to CV, email, and verified academic profiles -->
+    <section class="connect-section" id="contact-connect" aria-label="Curriculum Vitae, Contact, and Profiles">
+      <h2 class="section-heading" style="margin-top: 1rem; font-size: 1.45rem;">Curriculum Vitae, Contact & Profiles</h2>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 1rem;">
+        <!-- CV Card -->
+        <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1.25rem;">
+          <h3 style="margin-top: 0; font-size: 1.15rem; color: var(--text-primary);">Curriculum Vitae</h3>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.5;">
+            Detailed record of graduate research at HITSZ, undergraduate education at NEUB, published peer-reviewed papers, awards, and technical skills.
+          </p>
+          <div style="display: flex; gap: 0.65rem; flex-wrap: wrap;">
+            <a href={toUrl('/cv/')} class="btn-primary" style="font-size: 0.88rem; padding: 0.45rem 0.95rem;">
+              <span>View Online CV &rarr;</span>
+            </a>
+            <a href={toUrl('/downloads/Md_Abdul_Mutalib_CV.pdf')} target="_blank" rel="noopener noreferrer" class="btn-secondary" style="font-size: 0.88rem; padding: 0.45rem 0.95rem;">
+              <span>📄 PDF CV</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Direct Contact Card -->
+        <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1.25rem;">
+          <h3 style="margin-top: 0; font-size: 1.15rem; color: var(--text-primary);">Contact & Collaboration</h3>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.75rem; line-height: 1.5;">
+            Open to prospective PhD supervision inquiries, research collaborations, and academic discussions in Medical AI and 3D Computer Vision.
+          </p>
+          <a href={`mailto:${profile.email}`} style="font-weight: 600; font-size: 1rem; word-break: break-all;">
+            ✉️ {profile.email}
+          </a>
+          <span style="display: block; font-size: 0.85rem; color: var(--text-muted); margin-top: 0.35rem;">
+            {profile.researchCenter}, {profile.affiliation}
+          </span>
+        </div>
+      </div>
+
+      <!-- Verified External Academic & Code Profiles -->
+      <div style="margin-top: 1.25rem; background: var(--bg-surface-subtle); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1.15rem 1.25rem;">
+        <span style="font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.65rem;">
+          Verified Academic & Research Profiles:
+        </span>
+        <div class="social-chips" aria-label="Verified Academic & Code Profiles">
+          {profile.profiles.map((p) => (
+            <a href={p.url} target="_blank" rel="noopener noreferrer" class="social-chip">
+              <span>{p.label} &rarr;</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

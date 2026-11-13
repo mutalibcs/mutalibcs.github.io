@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mutalibcs.github.io/sitemap-index.xml
+

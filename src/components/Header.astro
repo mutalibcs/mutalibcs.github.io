@@ -1,0 +1,159 @@
+---
+import { toUrl } from '../utils/paths';
+
+const currentPath = Astro.url.pathname;
+
+function isActive(path: string) {
+  const target = toUrl(path);
+  if (path === '/' && (currentPath === target || currentPath === target.replace(/\/$/, '') || currentPath === '/')) return true;
+  if (path !== '/' && currentPath.includes(path.replace(/^\//, '').replace(/\/$/, ''))) return true;
+  return false;
+}
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href={toUrl('/')} class="site-title" aria-label="Md Abdul Mutalib homepage">
+      <span>Md Abdul Mutalib</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary Navigation">
+      <ul class="nav-links" id="nav-menu">
+        <li>
+          <a
+            href={toUrl('/')}
+            class:list={['nav-link', { active: isActive('/') }]}
+            aria-current={isActive('/') ? 'page' : undefined}
+          >
+            Home
+          </a>
+        </li>
+        <li>
+          <a
+            href={toUrl('/publications/')}
+            class:list={['nav-link', { active: isActive('/publications') || isActive('/publication') }]}
+            aria-current={isActive('/publications') ? 'page' : undefined}
+          >
+            Publications
+          </a>
+        </li>
+        <li>
+          <a
+            href={toUrl('/cv/')}
+            class:list={['nav-link', { active: isActive('/cv') }]}
+            aria-current={isActive('/cv') ? 'page' : undefined}
+          >
+            CV
+          </a>
+        </li>
+        <li>
+          <a
+            href={toUrl('/contacts/')}
+            class:list={['nav-link', { active: isActive('/contacts') }]}
+            aria-current={isActive('/contacts') ? 'page' : undefined}
+          >
+            Contact
+          </a>
+        </li>
+      </ul>
+
+      <button id="theme-toggle" class="theme-toggle-btn" type="button" aria-label="Toggle theme">
+        <span class="theme-icon" aria-hidden="true">🌓</span>
+      </button>
+
+      <button
+        id="mobile-toggle"
+        class="mobile-nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+        aria-label="Toggle navigation menu"
+      >
+        <span aria-hidden="true">☰</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<noscript>
+  <style>
+    /* Ensure navigation links are visible on mobile when JavaScript is disabled */
+    @media (max-width: 680px) {
+      .mobile-nav-toggle {
+        display: none !important;
+      }
+      .site-nav {
+        flex-direction: column;
+        align-items: flex-end;
+      }
+      .nav-links {
+        display: flex !important;
+        position: static !important;
+        flex-direction: row !important;
+        flex-wrap: wrap;
+        gap: 0.75rem !important;
+        padding: 0.5rem 0 !important;
+        box-shadow: none !important;
+        border-bottom: none !important;
+      }
+    }
+  </style>
+</noscript>
+
+<script>
+  // Theme toggle handling
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      let newTheme = 'light';
+      if (currentTheme === 'light') {
+        newTheme = 'dark';
+      } else if (currentTheme === 'dark') {
+        newTheme = 'light';
+      } else {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        newTheme = prefersDark ? 'light' : 'dark';
+      }
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+  }
+
+  // Mobile menu toggle
+  const mobileToggle = document.getElementById('mobile-toggle');
+  const navMenu = document.getElementById('nav-menu');
+  if (mobileToggle && navMenu) {
+    const toggleMenu = (open?: boolean) => {
+      const isExpanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+      const targetState = open !== undefined ? open : !isExpanded;
+      mobileToggle.setAttribute('aria-expanded', String(targetState));
+      if (targetState) {
+        navMenu.classList.add('is-open');
+      } else {
+        navMenu.classList.remove('is-open');
+      }
+    };
+
+    mobileToggle.addEventListener('click', () => toggleMenu());
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileToggle.getAttribute('aria-expanded') === 'true') {
+        toggleMenu(false);
+        mobileToggle.focus();
+      }
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (
+        mobileToggle.getAttribute('aria-expanded') === 'true' &&
+        !navMenu.contains(e.target as Node) &&
+        !mobileToggle.contains(e.target as Node)
+      ) {
+        toggleMenu(false);
+      }
+    });
+  }
+</script>
