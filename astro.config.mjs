@@ -9,7 +9,7 @@ export default defineConfig({
     sitemap({
       filter: (page) => {
         const path = new URL(page).pathname;
-        if (path.includes('404')) return false;
+        if (path.includes('404') || path.includes('google')) return false;
         if (path.includes('2026-01-01') || path.includes('2025-05-16') || path.includes('2026-04-01')) return false;
         if (
           path.includes('/about') ||
