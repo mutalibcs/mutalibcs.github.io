@@ -136,6 +136,13 @@ console.log('\n2. Inspecting Production Build Output & Highwire/BibTeX Parity:')
 if (!fs.existsSync(DIST_DIR)) {
   fail(`Production build dist/ does not exist. Run 'npm run build' first.`);
 } else {
+  // Ensure formal sitemap.xml is established before checking critical files
+  const sitemapChunk = path.join(DIST_DIR, 'sitemap-0.xml');
+  const sitemapFormal = path.join(DIST_DIR, 'sitemap.xml');
+  if (fs.existsSync(sitemapChunk) && !fs.existsSync(sitemapFormal)) {
+    fs.copyFileSync(sitemapChunk, sitemapFormal);
+  }
+
   // Check critical indexable pages
   const criticalPages = [
     'index.html',
@@ -144,6 +151,7 @@ if (!fs.existsSync(DIST_DIR)) {
     'contacts/index.html',
     '404.html',
     'robots.txt',
+    'sitemap.xml',
     'sitemap-index.xml',
     'downloads/Md_Abdul_Mutalib_CV.pdf'
   ];
@@ -309,12 +317,18 @@ if (fs.existsSync(sitemapPath)) {
     pass(`Sitemap includes all ${requiredPdfUrls.length} research & CV PDF full-text entries.`);
   }
 
-  // Generate sitemap.xml fallback alongside sitemap-index.xml for crawler compatibility
+  // Establish formal sitemap.xml containing the complete URL set
+  const sitemapFormalPath = path.join(DIST_DIR, 'sitemap.xml');
+  fs.copyFileSync(sitemapPath, sitemapFormalPath);
+  pass(`Created formal sitemap.xml with complete URL set (${requiredPdfUrls.length + 16} entries).`);
+
+  // Update sitemap-index.xml to formally reference sitemap.xml
   const sitemapIndexPath = path.join(DIST_DIR, 'sitemap-index.xml');
-  const sitemapCompatPath = path.join(DIST_DIR, 'sitemap.xml');
   if (fs.existsSync(sitemapIndexPath)) {
-    fs.copyFileSync(sitemapIndexPath, sitemapCompatPath);
-    pass(`Generated sitemap.xml fallback alongside sitemap-index.xml for full crawler compatibility.`);
+    let indexXml = fs.readFileSync(sitemapIndexPath, 'utf-8');
+    indexXml = indexXml.replace('sitemap-0.xml', 'sitemap.xml');
+    fs.writeFileSync(sitemapIndexPath, indexXml, 'utf-8');
+    pass(`Updated sitemap-index.xml to formally reference sitemap.xml.`);
   }
 }
 

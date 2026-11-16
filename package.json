@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "node --import tsx scripts/generate_redirects.ts && astro build",
+    "build": "node --import tsx scripts/generate_redirects.ts && astro build && cp dist/sitemap-0.xml dist/sitemap.xml",
     "preview": "astro preview",
     "check": "astro check",
     "validate": "node --import tsx scripts/validate.ts",

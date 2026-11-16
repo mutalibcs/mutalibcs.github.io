@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mutalibcs.github.io/sitemap-index.xml
 Sitemap: https://mutalibcs.github.io/sitemap.xml
+Sitemap: https://mutalibcs.github.io/sitemap-index.xml
