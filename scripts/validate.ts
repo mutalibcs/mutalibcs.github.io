@@ -262,7 +262,8 @@ if (fs.existsSync(sitemapPath)) {
     pass(`Sitemap correctly excludes 404 page.`);
   }
 
-  // Ensure compatibility stubs are excluded from sitemap
+  // Ensure compatibility stubs are excluded from sitemap URLs
+  const locMatches = Array.from(sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)).map((m) => m[1]);
   const disallowedSitemapPatterns = [
     '/resume',
     '/contact.html',
@@ -276,13 +277,44 @@ if (fs.existsSync(sitemapPath)) {
   ];
   let leakFound = false;
   for (const pat of disallowedSitemapPatterns) {
-    if (sitemapXml.includes(pat)) {
-      fail(`Compatibility redirect leaked into sitemap: ${pat}`);
+    const leakedUrl = locMatches.find((loc) => loc.includes(pat));
+    if (leakedUrl) {
+      fail(`Compatibility redirect leaked into sitemap URL: ${leakedUrl}`);
       leakFound = true;
     }
   }
   if (!leakFound) {
     pass(`Sitemap cleanly excludes all legacy compatibility redirect routes.`);
+  }
+
+  // Ensure all PDFs are included in the sitemap
+  const requiredPdfUrls = [
+    '/publication/two-stage-noise-reduced-pneumonia-detection/paper.pdf',
+    '/publication/lake-water-quality-organic-pollution-prediction/paper.pdf',
+    '/publication/brain-tumor-classification-mri-fusion/paper.pdf',
+    '/publication/hand-gesture-recognition-review/paper.pdf',
+    '/publication/air-quality-forecasting-bangladesh/paper.pdf',
+    '/publication/haematological-disorder-classification-cbc/paper.pdf',
+    '/downloads/Md_Abdul_Mutalib_CV.pdf'
+  ];
+
+  let allPdfsFound = true;
+  for (const pdfUrl of requiredPdfUrls) {
+    if (!sitemapXml.includes(pdfUrl)) {
+      fail(`Sitemap missing full-text PDF entry: ${pdfUrl}`);
+      allPdfsFound = false;
+    }
+  }
+  if (allPdfsFound) {
+    pass(`Sitemap includes all ${requiredPdfUrls.length} research & CV PDF full-text entries.`);
+  }
+
+  // Generate sitemap.xml fallback alongside sitemap-index.xml for crawler compatibility
+  const sitemapIndexPath = path.join(DIST_DIR, 'sitemap-index.xml');
+  const sitemapCompatPath = path.join(DIST_DIR, 'sitemap.xml');
+  if (fs.existsSync(sitemapIndexPath)) {
+    fs.copyFileSync(sitemapIndexPath, sitemapCompatPath);
+    pass(`Generated sitemap.xml fallback alongside sitemap-index.xml for full crawler compatibility.`);
   }
 }
 
