@@ -4,6 +4,7 @@ import ScholarMeta from '../components/ScholarMeta.astro';
 import CitationTools from '../components/CitationTools.astro';
 import { generateBibTeX, generatePlainCitation } from '../utils/citation';
 import { toUrl, toAbsoluteUrl, SITE_ORIGIN } from '../utils/paths';
+import { profile } from '../data/profile';
 import type { CollectionEntry } from 'astro:content';
 
 export interface Props {
@@ -136,7 +137,7 @@ const scholarlyJsonLd = {
         )}
 
         {!data.localPdf && (
-          <a href={`mailto:mutalib.cs@gmail.com?subject=Author%20Copy%20Request%20-%20${encodeURIComponent(data.title)}`} class="pub-action-btn">
+          <a href={`mailto:${profile.email}?subject=Author%20Copy%20Request%20-%20${encodeURIComponent(data.title)}`} class="pub-action-btn">
             <span>✉️ Request Author Copy</span>
           </a>
         )}

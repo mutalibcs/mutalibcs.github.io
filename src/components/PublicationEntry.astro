@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { toUrl } from '../utils/paths';
+import { profile } from '../data/profile';
 
 export interface Props {
   pub: CollectionEntry<'publications'>;
@@ -100,7 +101,7 @@ const typeLabel = data.type === 'journal'
     )}
 
     {!data.localPdf && (
-      <a href={`mailto:mutalib.cs@gmail.com?subject=Author%20Copy%20Request%20-%20${encodeURIComponent(data.title)}`} class="pub-action-btn">
+      <a href={`mailto:${profile.email}?subject=Author%20Copy%20Request%20-%20${encodeURIComponent(data.title)}`} class="pub-action-btn">
         <span>✉️ Request Author Copy</span>
       </a>
     )}
